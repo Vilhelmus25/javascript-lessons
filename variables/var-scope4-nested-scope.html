@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function outerFunction() {
+            var sampleVariable = 1;         /* három különböző sampleVariable
+            a scope a bajusz {} */
+            console.log(sampleVariable);
+
+            function innerFunction1() {
+                var sampleVariable = 2;     /* mivel ezt megadtam, ezért ez felülírja az outerFunction sampleVariable-jét*/
+                /* ha kiveszem a var-t akkor a külső scope-ban lévő sampleVariable értékét 2-re módosítja*/
+                console.log(sampleVariable);
+
+                function innerFunction2() {
+                    var sampleVariable = 3; /* szintén, hogy ha ezt kikommentelem, akkor a 2-est kapom.
+                    console.log(sampleVariable);*/
+                }
+
+                innerFunction2();
+            }
+            innerFunction1();
+        }
+
+        outerFunction();
+    </script>
+</body>
+
+</html>

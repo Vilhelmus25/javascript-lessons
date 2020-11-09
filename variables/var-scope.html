@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var globalScope = 'global';     /* a program futása során végig mindenhol elérhető lesz (globális)*/
+
+        function sampleFunction() {
+            console.log(globalScope);
+        }
+
+        sampleFunction();
+
+        function sampleFunction2() {
+            var localScope = 'local';
+            console.log(localScope);
+        }
+
+        sampleFunction();
+        sampleFunction2();
+        console.log(localScope);    /* ez hibát szül, nincs ilyen változónk, mert ezt egy fv-en belül lokálisan hoztuk létre
+        ezt már a GC (garbage collector) már megette. :) */
+
+    </script>
+</body>
+
+</html>

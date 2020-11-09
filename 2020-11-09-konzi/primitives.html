@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const integer = 10;         /* const azokra az értékekre amiket nem változtatunk és nem is akarunk*/
+        const float = 10;           /* multi cursor segítség: alt+shift és bal klikk*/
+        const exp = 10e10;
+        const binary = 0b10;
+        const octal = 0o10;
+        const hex = 0x10;
+        console.log(typeof typeof integer);      /* string lesz */
+
+        if (typeof integer === 'number') {   /* === vizsgálja a típust is (strict equality) */
+            /* a == csak az értéket nézi (loose equality) */
+            console.log('Ez egy szám');
+        } else {
+            console.log('Ez egy szám');
+        }
+        /* pontosvessző: nem szükséges kitenni, mert az engine automatikusan beteszi magának,
+        de nem mindig jól (pl. speciális karaktereknél), azért érdemes mindig kitenni */
+        let text = 'Ez egy szöveg';
+
+        let logical = true;
+
+        //Sose használd
+        //let textObject = new String('Hello')
+
+        logical false;  /* egy új memóriacímre íródik a false és ez irányul a logical-ra
+        primitíveknél ez van, immutable (módosíthatatlan) a régi megy a GarbageCollector kukájába*/
+
+        console.log(toiletPaper);
+        var toiletPaper;  /* undefined lesz var esetén a console.log, hoistingolja*/
+        let toiletPaper; /* nem lehet rá hivatkozni, mert nem kapott kezdőértéket */
+
+        let manualUndef = null;
+
+        function sample() {
+            return hoisted;
+        }
+        var hoisted = 'hoisted'; /* const hoisted... esetén azt mondja, hogy nem férünk hozzá értékadás előtt. De létezik már (undefined) */
+        console.log('return value: ', sample());
+
+        // a-z, A-Z, 0-9    ; nem kezdődhet számmal
+        var standardHungarianTaxRateInPercent = 27; /* ez egy beszédes változónév */
+
+    </script>
+</body>
+
+</html>

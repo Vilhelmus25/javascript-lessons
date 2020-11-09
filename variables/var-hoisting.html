@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        console.log(sampleVariable);    /* azt írja majd a console, hogy undefined*/
+        var sampleVariable = 'global';
+
+        /* ez azért van, mert ez olyan, mintha: */
+        var sampleVariable = undefined;
+        console.log(sampleVariable);
+        sampleVariable = 'global';
+        /* a változódeklaráció felemelődik és inicializálódik undefined-ként,
+        ez a hoisting. */
+
+    </script>
+</body>
+
+</html>

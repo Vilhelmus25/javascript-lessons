@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="click-me">Click me PLÍÍÍÍÍZ</button>
+    <button class="click-me">Click me PLÍÍÍÍÍZ</button>
+    <button class="click-me">Click me PLÍÍÍÍÍZ</button>
+
+    <script>
+        'use strict';
+
+        let elements = document.querySelectorAll('.click-me');      /* itt nem fontos a let, nem számít*/
+
+        for (let i = 0; i < elements.length; i += 1) {  /* itt a let minden egyes lépés után egy új binding lesz, olyan mintha mindig egy új i keletkezne, ezért fog szépen működni.*/
+            // de a let pl. Internet Explorerben nem támogatott, úgy viselkedik mint a var.
+
+            elements[i].addEventListener('click', function () {
+                console.log('item' + i);
+
+            })
+        }
+
+    </script>
+</body>
+
+</html>

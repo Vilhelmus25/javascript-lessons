@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="click-me">Click me PLÍÍÍÍÍZ</button>
+    <button class="click-me">Click me PLÍÍÍÍÍZ</button>
+    <button class="click-me">Click me PLÍÍÍÍÍZ</button>
+
+    <script>
+        'use strict';
+
+        var elements = document.querySelectorAll('.click-me');
+        /*      // Ez var változóval
+        for (var i = 0; i < elements.length; i += 1) {
+            elements[i].addEventListener('click', function () {
+                console.log('item' + i);           // a var értéke már 3 amikor odajutna a kód, mert a var-ral létrehozott i változó nem blokk szintű ezért 3 lesz mire eljutunk az eseményfigyelőre
+
+            })
+        }
+        */
+
+        /* kiemelt módon, vagyis a loop belsejét kiemelve, ezt egy fv-be bepakolva */
+        function clickHandler(i) {
+            elements[i].addEventListener('click', function () {
+                console.log('item' + i);
+
+            })
+        }
+
+        for (var i = 0; i < elements.length; i += 1) {
+            clickHandler(i);        // így rögtön lefuttatja az eseménykezlőt a paraméterül kapott i-vel!
+        }
+
+
+    </script>
+</body>
+
+</html>

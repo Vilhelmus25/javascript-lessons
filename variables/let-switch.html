@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        let value = 1;
+        //let result;
+
+        switch (value) {
+            case 0:
+                let result = 'Nulla';       /* a case-ek nem külön blokkok, hanem a switch a blokk. Ezért azt fogja mondani, hogy már létrehoztuk a result-ot*/
+                break;
+            case 1:
+                let result = 'Egy';
+                break;
+            default:
+                let result = 'Null';
+        }
+        /* megoldás: vagy a switch case-ekben külön result-ok vannak (result1, result2 stb.), vagy kint hozunk létre egy resultot..*/
+        console.log(result);
+
+
+    </script>
+</body>
+
+</html>

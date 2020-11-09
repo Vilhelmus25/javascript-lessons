@@ -11,9 +11,16 @@
     <script>
         'use strict'
 
-        console.log(samplevariable);    /* ha előbb próbálom elérni amit
-        let-tel inicializáltunk*/
-        let samplevariable = 'sample';
+        console.log(sampleVariable);    /* ha előbb próbálom elérni amit
+        let-tel inicializáltunk, akkor nem fér hozzá mielőtt inicializálná.
+        Hoistingolva van, de nem kap undefined inicializációt*/
+        // csak inicializálás után lesz elérhető a let! 
+        let sampleVariable = 'sample';
+
+        var sampleVariable2 = 'sample2';    /*minden var-ral létrehozott változó 
+        a window objecthez hozzá lesz kötve és elérhető lesz azon keresztül*/
+        /* a var-osat nem */
+        console.log(window.sampleVariable2);
     </script>
 </body>
 

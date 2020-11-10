@@ -19,13 +19,13 @@
         if (!String.prototype.includes) {
             String.prototype.includes = function (search, start) {
                 'use strict';
-                if (typeof start !== 'number' || isNaN(start)) {
+                if (typeof start !== 'number' || isNaN(start)) {            /* melyik indextől induljon a keresés*/
                     start = 0;
                 }
-                if (typeof search !== 'string' || start + search.length > this.length) {
+                if (typeof search !== 'string' || start + search.length > this.length) {    /* ha nem string amit keresünk, vagy ha a start és a keresés hossza nagyobb, mint a keresett szöveg, akkor false*/
                     return false;
                 } else {
-                    return this.indexOf(search, start) !== -1;
+                    return this.indexOf(search, start) !== -1;  /* különben indexOf metódus használata*/
                 }
             };
 

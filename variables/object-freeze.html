@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';         // Strict módban nem dob hibát, de ugyanúgy nem módosíthatom
+
+        const user = {          /* mi van ha a propertyket sem akarom módosíthatóvá tenni? Erre van az Object.freeze()*/
+            firstName: 'John',
+            lastName: 'Doe'
+        };
+
+        Object.freeze(user);    // így működik
+        user.firstName = 'Jane';    //már hibát dob
+    </script>
+</body>
+
+</html>l

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        // Function definitions
+
+        console.log(getGrossPriceFD(10000, 27));        //  D = Function Declaration
+
+        function getGrossPriceFD(netPrice, vatPercent) {     //vetPercent áfa%
+            return netPrice * (1 + vatPercent / 100);
+
+        }
+
+        //console.log(getGrossPriceFE(10000, 27));        //  FE = Function Expression
+        const getGrossPriceFE = function (netPrice, vatPercent) {     // anonim fv.
+            return netPrice * (1 + vatPercent / 100);               // ez hibára fut, mert inicializálása előtt nem férek hozzá, itt is van hoisting amúgy (csak nem lesz undefined)
+            // ha var-ral hozok létre változót const helyett, akkor felemelei (hoisting) és undefined lesz, ami nem fv, ezért nem tudom használni
+            // ezért a fv után kell meghívni!
+        }
+
+        console.log(getGrossPriceFE(10000, 27));        //  FE = Function Expression
+    </script>
+</body>
+
+</html>

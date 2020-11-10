@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //'use strict';       // strict módban ad hibát lent, anélkül pedig lefut és a külső a+b  -s fv-t eléri!!!
+
+        // itt az IIFE-t lecseréljük egy block scope-ú fv-re
+        {
+            function calculate(a, b) {
+                return a + b;
+            }
+            console.log(calculate(1, 2));
+            {   // blokk létrehozása
+                function calculate(a, b) {
+                    return a * b;
+                }
+                console.log(calculate(2, 3));
+            }
+            console.log(calculate(2, 3));
+        }   // ez most egy blokk
+
+
+        console.log(calculate(10, 10));   // ez itt nem megy, mert a blokkon kívülről nem érhető el a calculate fv.
+
+
+    </script>
+</body>
+
+</html>

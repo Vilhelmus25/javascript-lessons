@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        // most egy objectünk van, param a neve
+        function getGrossPrice(param = { netPrice: 1000, vatPercent: 27, discountPercent: 5 }) {
+            return param.netPrice * ((100 - param.discountPercent) / 100) * (1 + param.vatPercent / 100);
+        }
+
+        console.log(getGrossPrice({ netPrice: 10000 }));        // ekkor kapott paramétert, ezért az alapértelmezettek nem érvényesülnek, viszont, hiányzik a másik kettő kapott param.
+
+        // ha ezt szeretném kiküszöbölni, azok a default paraméterek is érvényesüljenek, amiket a meghíváskor nem adunk meg
+
+
+        function getGrossPrice({ netPrice = 1000, vatPercent = 27, discountPercent = 5 } = {}) {        // egyenlő üres objektum iterál
+            return netPrice * ((100 - discountPercent) / 100) * (1 + vatPercent / 100);
+        }
+        // így már a hiányzókat a defaultból veszi majd.
+        console.log(getGrossPrice({ netPrice: 10000 }));
+
+    </script>
+</body>
+
+</html>

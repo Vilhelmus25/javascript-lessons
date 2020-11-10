@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        // Closure    ; a GC gyilkolása előtt hozzáférünk mondjuk egy fv belső változóihoz utólag, kívülről.  (zárvány)
+
+        function makeCounter() {
+            let counter = 0;
+            return function increaseCounter() {         // lehet anonim, de most nevet adok neki
+                counter += 1;
+                console.log(counter);
+            }
+        }
+
+        const increaseCounter = makeCounter();      // itt az increaseCounterbe lementjük a makeCounter visszatérési értékét
+        increaseCounter();          // mivel a const érték nem más valójában mint egy function, ezért meg tudom hívni!!!!
+        increaseCounter();
+        increaseCounter();          // ez a closure, a fv zárása után is hozzáférek egy változóhoz
+        increaseCounter();
+        increaseCounter();
+        increaseCounter();
+        increaseCounter();
+        increaseCounter();
+
+        console.log('-------- curly ----------');
+        makeCounter()();            // Ez a makeCounternek a visszatérési értékében lévő fv-t futtatja le
+    </script>
+</body>
+
+</html>l

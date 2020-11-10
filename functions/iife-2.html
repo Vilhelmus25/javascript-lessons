@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';       // strict módban 3,6,5; nélküle 3,6,6 ,mert akkor a blokkon belüli calculatet hívja meg!!!
+
+        (function () {
+            function calculate(a, b) {
+                return a + b;
+            }
+            console.log(calculate(1, 2));
+            {   // blokk létrehozása
+                function calculate(a, b) {
+                    return a * b;
+                }
+                console.log(calculate(2, 3));
+            }
+            console.log(calculate(2, 3));
+        })();
+
+    </script>
+</body>
+
+</html>

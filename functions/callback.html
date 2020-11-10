@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        // Callback
+
+        // Egy olyan fv ami paraméterként van átadva egy másik fv-nek
+
+        const numericArray = [3123, 1576, 45234, 52623, 4, 2, 62346, 6,];
+
+        // a sort fv-t stringekre találták ki
+
+        function compare(a, b) { // a tömb egyik és másik eleme az a,b
+            return a - b;
+        }
+
+        numericArray.sort(compare); // nem meghívjuk a fv-t (mert nincs ott az a,b; azt a fv viszi magával), hanem átadjuk mint paramétert; ez a callback function
+
+        console.log(numericArray);
+
+        //higher order function azok a fv-ek amik más fv-ekkel dolgoznak, ilyen a sort is.
+
+    </script>
+</body>
+
+</html>

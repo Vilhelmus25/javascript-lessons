@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        const user = {
+            firstName: 'John',
+            lastName: 'Doe',
+            // fullName: function () {         // ez lenne alapból, de van egyszerűbb
+
+            // }
+            fullName() {         // ez egyszerűbb (belső fv-e az objektumnak)
+                console.log(this.firstName, this.lastName);
+            }
+        }
+
+        user.fullName();
+
+
+
+        const user = {
+            firstName: 'John',
+            lastName: 'Doe',
+            // fullName: function () {         // ez lenne alapból, de van egyszerűbb
+
+            // }
+            // METÓDUSNÁL NE HASZNÁLJUK AZ ARROW FUNCTIONT, DE METÓDUSON BELÜL (pl: console.log - résznél, már lehet) !!!
+            fullName: () => {           // arrowfunction-nel        : () => { }     - a {} akár el is hagyható      // ez undefined-okat eredményez
+                console.log(this);          // ez a this a window objectet adja, viszont az arrow function nem bind-olja a this-t,ezért a szülő this értékét fogja használni
+                // vagyis egy fv-ben a this nem lesz más, mint az az objektum amin meghívtam a metódust., vagyis az user. 
+                //Viszont arrow function esetén nem fogja a thist a user-hez bindolni, hanem a szülő vagyis a globális window lesz a this.
+
+            }
+        };
+
+        user.fullName();
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        //implicit return lesz (undefined lesz a John).
+        const arrowFunction1 = (firstName) => { };        // ha nem csinál semmit a fv, akkor ki kell rakni a {}-t; továbbá, ha 1 paraméterünk van, akkor a (opcionálisan kitehető)
+        // ha nincs paraméterünk, vagy 1-nél több paraméterünk van, akkor kell ()-> ezért mindig érdemes kitenni és akkor nincs gond
+        // console.log(arrowFunction1('John'));
+
+        // explicit return
+        const arrowFunction2 = (firstName) => 'Hello ' + firstName + '!';   //Egyszerű utasításnál nem kell kitenni a {}-t, de kitehetjük, viszont ha kitesszük, akkor már return is kell
+        console.log(arrowFunction2('John'));
+        const arrowFunction2 = (firstName) => { return 'Hello ' + firstName + '!' };            // Így E!
+        console.log(arrowFunction2('John'));
+
+        const arrowFunction3 = (firstName) => { name: firstName };       // egy objektumot szeretnék visszatérési értéknek, egy olyan objectet, aminek a name-propertyje a firstName
+        console.log(arrowFunction3('John'));            // ekkor undefined-ot kapok, mert a {}-t egy blokknak veszi és nem objektumnak, mert nem az objektumé, hanem a függvény blokkja, vagyis label a neve.
+        // a label egy címke, amire ebben az esetben hivatkozunk, ugrunk.
+
+        const arrowFunction4 = (firstName) => ({ name: firstName });        // ha azt szeretném, hogy ha egy objektumot szeretnék visszatérési értékként visszakapni, akkor () kell.
+        console.log(arrowFunction4('John'));
+
+        const arrowFunction5 = (firstName) => { return { name: firstName } };       // ez is jó, az első a fv törzsét jelentő kapcsos zárójel+ a return, ez is objektumot ad vissza
+        console.log(arrowFunction5('John'));
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        const numericArray = [42613, 13, 734, 24562, 2456161, 7345, 2, 1];
+        numericArray.sort(function (a, b) { return a - b });        //classic mód      + a sort fv callBack fv-e
+        numericArray.sort((a, b) => a - b);         // arrowFunction        + a sort fv callBack fv-e
+        console.log(numericArray);
+    </script>
+</body>
+
+</html>

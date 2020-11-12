@@ -43,7 +43,7 @@ function correctedBubbleSort(arr, n) {
 
 sortedArray = correctedBubbleSort(intArr, intArrLength);
 
-function userInput(sortedArray) {
+function userInput(arr) {
     let element = prompt("Plíííííz adj egy számot! ", "33");
     console.log(element);
     // if (elelment != null) {
@@ -53,23 +53,24 @@ function userInput(sortedArray) {
 
     let arrayElement = 0;
 
-    if (typeof element === "number") {
-        arrayElement = element;
-    }
+    //console.log(typeof element);
 
-    for (let i = 0; i < sortedArray.length; i++) {
-        if (arrayElement > sortedArray[i]) {
+    arrayElement = parseInt(element);
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arrayElement > arr[i]) {
 
         }
         else {
-            sortedArray.splice(i, 0, arrayElement);     // where, deleting 0 items, what
+            arr.splice(i, 0, arrayElement);     // where, deleting 0 items, what
+            break;
         }
     }
-    return sortedArray;
+    return arr;
 }
 
-userInput(sortedArray)
-console.log(sortedArray);
+
+console.log(userInput(sortedArray));
 
 console.log('---------crack---------');
 console.log(intArr);

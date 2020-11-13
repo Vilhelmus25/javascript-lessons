@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        console.log('Global code.');
+
+        function one() {
+            console.log('Function "one" is running!');
+            two();
+        }
+        function two() {
+            console.log('Function "two" is running!');
+            three();
+        }
+        function three() {
+            console.log('Function "three" is running!');
+        }
+
+        one();
+
+
+        // Execution Context : LIFO (Last In First Out): Ebben a kódban: Global(),one(),two(),three() a beolvasási sorrend. Lefutáskor three() végrehajtódik, aztán a two(), stb...
+            // Az Execution Context valójában csak egy kifejezés arra, hogy leírjuk azt a környezetet, amiben a kódunk fut. 
+            // Tehát az Execution Context a JavaScript kó végrehajtásának a környezete, ami tartalmaz mindent, amire a kód futtatásához szükség van.
+
+                // Lexical Environment nem mást jelent, mint hogy a kód, amit írtunk fizikálisan hol helyezkedik el, hol található.
+                // Például ha egy változóz létrehozunk egy függvényen belül, akkor ez a változó fizikailag, azzaz lexikálisan a függvényen belül lesz. A változó a függvénytől/környezettől függ.
+
+                    // a Lexical Environment tartalmaz egy Environment recordot (a Lexical Environment belül lévő változó és függvény deklarációk itt tárolódnak)
+                    // és egy referenciát a külső Lexical Environmentre. Ez a referencia a Global Environment esetében null.
+
+                        // A Scope a Lexical Environmenten keresztül valósul meg. A külső Lexical Environmentre mutató referencia a külső scope-ot jelenti.
+
+    </script>
+</body>
+
+</html>

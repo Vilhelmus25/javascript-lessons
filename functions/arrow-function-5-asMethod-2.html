@@ -11,6 +11,31 @@
     <script>
         'use strict';
 
+        const user = {
+
+            firstName: 'John',
+            lastName: 'Doe',
+            // fullName: () => {       // ezt így nem szabad használni
+            //     console.log(this);
+            // }
+
+            // fullName() {
+            //     console.log(this.firstName, this.lastName);
+            // }
+            // fullName() {
+            //     setTimeout(function () {
+            //         console.log(this.firstName, this.lastName);     // így undefined, undefined lesz
+            //         console.log(this);     // így a this a windowra vonatkozik, a globális window objektum. Mert ez nem a User Object metóduse, hanem a globális Window-é (setTimeout)
+            //     }, 3000)        // 3 sec késleltetés
+            // }
+
+            fullName() {
+                setTimeout(() => {
+                    console.log(this.firstName, this.lastName);   // a szülőnek a this értéke, vagyis maga a User object lesz  
+                }, 3000)        // 3 sec késleltetés
+            }
+        };
+        user.fullName();
 
     </script>
 </body>

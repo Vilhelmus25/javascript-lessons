@@ -15,8 +15,9 @@ personDataLog = (obj) => {
 }
 
 const person = {
-    //firstName: 'Jane',            // ilyenkor ezt a végére rakja a John-t
+    firstName: 'William',            // kommenteléssel tesztelhető
     lastName: 'Wallace',
     age: 30,
 }
-console.log(personDataLog(person));
+const introduction = personDataLog(person);
+console.log("My name is " + introduction.firstName + ', ' + introduction.lastName + ". I'm " + introduction.age + ' years old.');

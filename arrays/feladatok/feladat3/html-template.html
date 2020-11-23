@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        const content = ['első', 'második', 'harmadik'];
+        let output;
+        let arrayContent;
+        const htmlTemplateGenerator = content.forEach(function (element) {
+
+
+            arrayContent = content.map('<li>' + element + '</li>' + '<br>')
+
+
+
+        });
+
+        console.log('<ul>' + htmlTemplateGenerator + '<ul>');
+
+    </script>
+
+</body>
+
+</html>

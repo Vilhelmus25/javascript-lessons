@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        const numericArray = [11, 22, 33, 44, 55];
+        const exponentialFlat = numericArray
+            .map(item => [item, item ** 2, item ** 3])      // létrehoztunk egy tömböt, ami tartalmazza az eredeti tömböt, annak a négyzet és köb elemeit
+            .flat();
+        console.log(exponentialFlat);           // flat-tel már nem külön, hanem egybe tartalmazza az elemeket, 11, 11^2, 11^3, 22, 22^2 stb
+
+
+        // flatMap()
+        const exponentialFlat2 = numericArray.flatMap(item => [item, item ** 2, item ** 3]);          // ez egylépésben csinálja a fentit
+        console.log(exponentialFlat2);
+    </script>
+
+</body>
+
+</html>

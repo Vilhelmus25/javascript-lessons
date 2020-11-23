@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        'use strict';
+        /*
+                Int8Array   // 8 biten előjelesen egész számokat tárol (- és + számok)
+                Uint8Array  // -||- csak előjel nélküli
+                Uint8ClampedArray   // a működése más egy picit, 
+                Int16Array  
+                Uint16Array
+                Int32Array
+                Uint32Array
+                Float32Array        // lebegőpontos
+                Float64Array
+        */
+
+        // -128....+127
+        // 11111111 .. 01111111
+        const signedIntEightArray = new Int8Array(3);               //  (  (3) azt jelenti, hogy egy 3 elemű tömböt hozok létre, a ([1,2,3]) egy ilyen tömböt hozok létre)  ugye a (a konstruktorhívás helye)
+        signedIntEightArray[0] = 12;
+        signedIntEightArray[1] = 128;   // ez mivel kiesik a keretből, a +127 a max, ezért előlről kezdi vagyis -128 lesz , amennyivel kicsúszok, annyival tolódik tovább
+        signedIntEightArray[2] = 129;   // -127 lesz  stb.  Körbe megy akármilyen nagyot adok meg
+        console.log(signedIntEightArray);
+
+
+        // 0 .. 255
+        const unsignedClampedIntEightArray = new Uint8ClampedArray(3);
+        unsignedClampedIntEightArray[0] = 12;
+        unsignedClampedIntEightArray[1] = -128;     // ha 0-nál kisebb, akkor 0 marad
+        unsignedClampedIntEightArray[2] = 1290;     // ha 255-nél nagyobb, akkor 255 lesz
+        console.log(unsignedClampedIntEightArray);
+
+
+    </script>
+
+</body>
+
+</html>

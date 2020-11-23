@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        'use strict';
+
+        const users = [{
+            firstName: 'Kiss',
+            lastName: 'József',
+            age: 18
+        },
+        {
+            firstName: 'Horváth',
+            lastName: 'Péter',
+            age: 34
+        },
+        {
+            firstName: 'Kováts',
+            lastName: 'Ilona',
+            age: 24
+        },
+        {
+            firstName: 'Nagy',
+            lastName: 'Antal',
+            age: 66
+        }
+        ];
+
+        const findResult = users.find(user => user.age > 18);           // az első ilyen feltételnek megfelelő objektumot fogja visszaadni
+        console.log(findResult);
+
+        const findIndexResult = users.findIndex(user => user.age > 18);         // itt az indexét adja vissza az első olyan elemnek ami megfelel a feltételnek
+        console.log(findIndexResult);
+
+        const someResult = users.some(user => user.age > 18);       // van-e olyan elem a tömbben, legalább egy amire igaz, boolean-t ad vissza
+        console.log(someResult);
+
+        const everyResult = users.every(user => user.age > 18);     // csak akkor lesz igaz, ha mindegyikre igaz a feltétel
+        console.log(everyResult);
+    </script>
+
+</body>
+
+</html>

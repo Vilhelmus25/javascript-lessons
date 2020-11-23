@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        /*
+            Írj egy olyan függvény kifejezést, ami paraméterként vár egy egész számokat tartalmazó tömböt! (Input ellenőrzést nem kell végezni.)
+            A függvény szorozza meg tömbelemek értékét 1.27-el, majd pedig térjen vissza az elemek összegével!
+        */
+
+        const multiplierArray = new Int32Array(100);      //  paraméterként egy egész számokat tartalmazó tömböt vár
+        multiplierArray[0] = 5;                         // pár tömbelem
+        multiplierArray[1] = 8;
+        const multiplierFunction = multiplierArray.map(item => item * 1.27)             // előbb map-pel beszorozzuk az elemeket
+            .reduce((previousValue, currentValue) => previousValue + currentValue);     // majd itt összeadjuk őket
+
+        console.log(multiplierFunction);
+
+    </script>
+</body>
+
+</html>

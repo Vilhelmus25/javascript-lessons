@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        // procedurális way
+        const numericArray = [345, 5435234, 1142, 4584, 23, 10231234, 6];
+        // for (let i = 0; i < array.length; i++) {
+        //    console.log(numericArray[i]);
+
+        // }
+
+        //funkcionális megoldás
+        numericArray.forEach(function (item) {              // a forEach egy callback functiont vár értékül, egy fv-t hív meg a tömbünk minden egyes elemére
+            console.log(item);
+        });
+
+        numericArray.forEach(item => console.log(item));             // arrow functionnel
+
+
+    </script>
+</body>
+
+</html>

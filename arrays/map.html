@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        const numericArray = [11, 22, 33, 44, 55];
+        const exponentArray = numericArray.map(item => item ** 2);          // a map metódus egy callback-et kap, ami egy arrowfunction, mindig kap egy tömbelemet és a visszatérési érték pedig ennek a tömbelemnek a 2. hatvány (**)
+        console.log(exponentArray);
+
+        console.log(numericArray.map((item, index) => item * index));       // itt a map 2. paramétere most megkapja a tömb indexét és azzal szorozzuk az adott elemet. A 2. param az opcionális
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id="price-list">
+        <li>AOC C24G1 Monitor</li>
+        <li data-company="AMD">
+            SAPHIRE Radeon RX 5700 XT 8GB GDDR6 256bit videókártya
+        </li>
+        <li data-price="151.012,12">
+            GIGABYTE GeForce RTX 2060 SUPER AORUS 8GB GDDR6 256bit videókártya
+        </li>
+        <li data-price="123.243,55">
+            LG 34UC79G-B Monitor
+        </li>
+        <li data-price="64.543,29">
+            GIGABYTE GeForce GTX 160 WINDFORCE OC 3GB GDDR5 192bit videókártya
+        </li>
+        <li data-price="230.323,32">
+            Acer Predator XB271HU Monitor
+        </li>
+        <li data-price="48.344,30">
+            LG 25UM58-P Monitor
+        </li>
+    </ul>
+
+    <script>
+        'use strict';
+        /*     {
+                 // adjuk össze azon elemek összegét amik monitorok és van data-price-juk
+                 // const dataPrice = document.querySelectorAll('#price-list li[data-price]');             // a price-list id-jú elemeken belül az lielemeken amiknek a [data-price] tulajdonsága meg van adva
+                 const dataPrice = Array.from(document.querySelectorAll('#price-list li[data-price]'));  // így a nodeListből tömböt készít
+                 //console.log(dataPrice);                                                                 // a querySelector nem egy tömböt ad vissza, hanem egy NodeList-et, tehát nem olyan tulajdonságai és metódusai vannak, mint egy tömbnek
+     
+                 const monitors = dataPrice.filter(item => item.textContent.includes('Monitor'));        // most kiszűrjük a tömbből azokat az elemeket, amik tartalmaznak 'Monitor' szövegrészt.
+                 const monitorsWithCorrectPrice = monitors.map(item => parseFloat(item.dataset.price.replace('.', '').replace(',', '.')));        // a pontot kivesszük, a vesszőt kicseréljük pontra, mert egy correct pricet akarok kapni
+                 // a parseFloat is kell
+     
+                 //console.log(monitorsWithCorrectPrice);
+     
+                 const sumOfMonitorsPrice = monitorsWithCorrectPrice.reduce((previousPrice, currentPrice) => previousPrice + currentPrice);      // összeadjuk a jelen esetben 3 elemű tömb értékeit
+                 console.log(sumOfMonitorsPrice);
+        }*/
+
+
+        // !!!!!!!   Muszáj nekem ennyi tömböt létrehoznom???   Nem !!!!!!!!
+        //   METHOD CHAINING!!!
+        //      betesszük egy változóba a nodeList tömbbé alakított formáját, amit szűrünk 'monitor' alapján, majd formázzuk a price-t map-pel, aztűn összeadjuk az értékeket
+
+        const sumOfMonitorsPrice = Array.from(document.querySelectorAll('#price-list li[data-price]'))
+            .filter(item => item.textContent.includes('Monitor'))
+            .map(item => parseFloat(item.dataset.price.replace('.', '').replace(',', '.')))
+            .reduce((previousPrice, currentPrice) => previousPrice + currentPrice);
+
+
+    </script>
+
+
+</body>
+
+</html>

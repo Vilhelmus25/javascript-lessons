@@ -19,26 +19,21 @@
                         someElementIsANumber: Értéke true / false attól függően, hogy a tömbben van e number típusú elem vagy sem
                 */
 
-        //const multifunctionalObject = new Array([], null);
-        const multifunctionalObject = {
-            array: [],
-            value: null
+
+        const multifunctionalFunction = function (array, value) {
+            return {
+                exists: array.find(item => item === value),                                     // a végigjárt elem (item) az egyenlő-e a value értékkel, az értéket adja vissza, nem boolean-t
+                index: array.findIndex(item => item === value),                                 // a végigjárt elem (item) az egyenlő-e a value értékkel, a találat indexét adja vissza
+                allElemenetIsNumber: array.every(item => typeof item === 'number'),             // mindegyik elem 'number' típusú-e, booleant ad
+                someElementIsANumber: array.some(item => typeof item === 'number')              // van-e 'number' típusú elem, booleant ad
+            };
         };
-        multifunctionalObject.array = [3, 'asd', false, 45, 23, '45'];
-        multifunctionalObject.value = 45;
 
-        const multiplierFunction = {
-            exists: this.find(prop => prop.array === prop.value),
-            //index: this.findIndex(prop => prop.array === prop.value),
-            //allElementisANumber: this.every(prop => prop.typeof('number')),
-            //someElementIsANumber: this.some(prop => prop.typeof('number'))
-        }
-        function functionExpression() {
-            return multiplierFunction;
-        }
+        // példaértékek a teszthez
+        const multifunctionalArray = [3, 'asd', false, 45, 23, '45'];
+        const multifunctionalValue = 45;
 
-
-        console.log(functionExpression(multifunctionalObject));
+        console.log(multifunctionalFunction(multifunctionalArray, multifunctionalValue));
     </script>
 
 </body>

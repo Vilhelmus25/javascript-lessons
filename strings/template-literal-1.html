@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        const firstName = 'John';
+        const lastName = 'Doe';
+        const age = 30;
+        const sayMyName = 'My name is ' + firstName + ' ' + lastName + ', and I\'m ' + age + ' years old.';         // ez kaotikus tud lenni, ennek kiküszöbölésére, egyszerűsítésére találták ki a template literált.
+        const saMyName2 = `My name is ${firstName} ${lastname}, and I'm ${age} years old.`;         //  backtick a ` ` ebben kell foglalni az ilyen szintaktikájú cuccokat, ${} hozzáfűzi a tartalmat a stringhez. bármi lehet ${}-on belül, fv hívás, összetettebb is
+        // valamint a sapce-ekre figyeljünk, a sima '' -ot nem kell endscape-elni, mert backtick-ben vagyunk
+        console.log(sayMyName);
+    </script>
+</body>
+
+</html>

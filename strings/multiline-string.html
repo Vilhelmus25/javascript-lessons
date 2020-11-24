@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        // const multiline = 'first line \n' +
+        //     'second line \n' +
+        //     'third line';
+        // console.log(multiline);
+
+
+        const multiline = ` first line              
+                            second line 
+                            third line`;
+        // kivettük az aposztófokat és a \n valamint a + -okat  de ez magában nem jó, mert viszi magával a space-eket és a tördelést.
+        //saját tördelést kell csinálni egy metódussal:
+        function translate(data) {
+            return data.split('\n').map(line => line.trimStart()).join('\n');             // vágjuk a stringet a sortörések mentén (.split(\n)) jelenti ezt. Ez egy tömböt ad,
+            // akkor a tömbnek van map metódusa, a tömbben a stringnek a sorai vannak, ezekre a sorok trimStart-ot küldünk, hogy a sor elejéről vágja le a space-eket, viszont még mindig
+            // tömbjeim vannak, nem azt akarom, hanem egy stringet, ezért összefűzöm őket a '\n' (new line karakterrel).
+        }
+
+        //const translate = data => data.split('\n').map(line => line.trimStart()).join('\n');              // ugyanaz arrowfunctionnel function expressionként, ez szebb
+        console.log(translate(multiline));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+        // mi van akkor, ha nem tudom pontosan, hogy hány paramétert kap a fv-ünk illetve hány argumentummal fogunk dolgozni
+        // régen arguments.object segítségével
+
+
+        function restParameter(x, y, ...z) {      // itt az x és y utáni összes többi paramétert tömbben fogja tárolni
+            // ez tényleg egy tömb, nem úgy mint az arguments object, ezért jobb vele dolgozni
+            console.log(arguments);
+            console.log(x, y, z);
+        }
+        restParameter(1, 2, 3, 4, 5, 6, 7, 8, 9);         // hiába egy elem kerül a spread operátorba, attól még tömböt csinál belőle, ha több akkor is
+
+    </script>
+
+</body>
+
+</html>

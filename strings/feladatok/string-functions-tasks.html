@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+        /*      Feladat 1  -  merge     */
+
+
+        const mister = {
+            firstName: 'Jonh',
+            lastName: 'Doe'
+        };
+
+        const miss = {
+            firstName: 'Jane',
+            lastName: 'Doe'
+        }
+
+        const merge = (...obj) => console.log({ ...obj });
+
+        merge(mister, miss);
+
+
+        /*      Feladat 2  -  tagged template       */
+        {
+            const makeBoldHtmlContent = (texts, ...values) =>
+                texts.map((text, index) =>
+                    `<i>${text}</i><b>${values[index]}</b>`).join('');          // még undefined-ot ad a végére, de jó
+
+            const toHtml = makeBoldHtmlContent`My name is ${mister.firstName} ${mister.lastName} by now.`;
+            document.body.innerHTML = toHtml;
+        }
+
+
+        /*      Feladat 3  -  tagged template       */
+
+        const shaperFunction = (char, ...array) => console.log((char, array));          // folyt köv.
+        shaperFunction('!', mister);
+
+    </script>
+
+</body>
+
+</html>

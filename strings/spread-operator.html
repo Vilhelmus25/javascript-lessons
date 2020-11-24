@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        const message = 'message';
+        // alakítsuk tömbbé, úgy, hogy minden karakter egy tömbelem legyen   -> spread
+        const characterArray = [...message];            // spread operator a ...    szétbontja elemeire a stringet és mi egy tömbbe tesszük
+        console.log(characterArray);
+
+
+        const arr1 = [1, 2, 3, 4, 5];       // ezt a két tömböt összefűzzük a spread operator segítségével
+        const arr2 = [6, 7, 8, 9, 10];
+        console.log([...arr1, ...arr2]);        // ezzel az egyik és a másik tömböt is elemeire bontottuk és betettük őket egy tömbbe
+        // nem kell a concat
+
+
+        const copyArr1 = [...arr1];               // deep copyt készítek, nem csak referencia szerint, hanem egy az egybe, egy teljesen új tömböm lesz.
+        console.log(copyArr1);
+
+        const user = {          // objektum másolás deep copy segítségével
+
+            firstName: 'John',
+            lastName: 'Doe'
+        };
+
+        const copyUser = { ...user };   // nem a tömbök [] zárójelei kellenek, hanem az objektum iteráloknak a kapcsos zárójelei!!!
+        //console.log(copyUser);
+
+        user.firstName = 'Jane';
+        console.log(copyUser);      // ezután is marad John a Copy-nál, mert az eredetinél módosult.
+
+
+    </script>
+
+</body>
+
+</html>

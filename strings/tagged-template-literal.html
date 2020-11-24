@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        const user = {
+            firstName: 'John',
+            lastName: 'Doe',
+            age: '30'       // azért van stringben, hogy az uppercase működjön
+        };
+
+        /*       const tag = (texts, ...values) => console.log(texts, values);       // tag nevezetű function expression, ami paraméterül szövegeket fog kapni, a szövegek mellé fog kapni egy values paramétert amiből bármennyi lehet
+               // csak kiloggoljuk   // ha nincs a spread operátor, akkor csak az elsőt kapom meg az object propertyből
+       
+                  tag`My name is ${user.firstName} ${user.lastName}, and I'm ${user.age} years old.`;               */
+        // meghívom a fv-t, simán csak a nevét írom le, majd átadok neki egy template stringet.
+        // két tömböt kapunk egyszer csak a stringek, töltelék, szóközökkel. Majd a másik tömb az értékek az objektum property-é ugye.
+
+        // Azt szeretnénk, hogy maradjon ez a string tag, de az értékek, amikor értéket kap, az legyen csupa nagybetű és legyen strong tag-ek közé betéve
+        const tag = (texts, ...values) =>
+            texts.map((text, index) =>      // a texts az egy tömb, ezért bejárható map-pel, a callback fv-e kapjon két paramétert, az egyik a text a másik minden esetben az index
+                `${text}${values[index] ? ` <strong> ${values[index].toLocaleUpperCase()}</strong > ` : ''}`       // a visszatérési értéke legyen egy olyan literál vagy template string (``)
+                // ami kiír egy textet (my name is), majd hogy ha valamilyen values jön, ha van értéke az adott indexen, akkor egy elvis operátort azaz egy nari operátort 3 operandusút (?), akkor írja ki
+                // a következő template stringet `<strong>` -tag-ek közé, a values-nek az indexedik elemét, méghozzá nagybetűssé alakítva (.toLocalUppersCase())-el
+                // a : azt jelenti, hogy mi van ha különben, akkor üres stringet generálunk le
+            ).join('');           // joinnal összekapcsoljuk, mert nem tömböt szeretnénk, hanem egy stringet
+        const template = tag`My name is ${user.firstName} ${user.lastName}, and I'm ${user.age} years old.`;        // beteszem a template változóba a tag fv visszatérési értékét
+        document.body.innerHTML = template;
+    </script>
+</body>
+
+</html>

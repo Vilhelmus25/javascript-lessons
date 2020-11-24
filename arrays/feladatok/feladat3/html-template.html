@@ -11,19 +11,36 @@
     <script>
         'use strict';
 
-        const content = ['első', 'második', 'harmadik'];
-        let output;
-        let arrayContent;
-        const htmlTemplateGenerator = content.forEach(function (element) {
+        /*
 
+        Írj egy olyan függvénykifejezést, ami paraméterként egy stringeket tartalmazó tömböt kap  (Input ellenőrzést nem kell végezni.), 
+        és visszaad egy html template-et (string)! A html template egy felsorolt lista, aminek a listaelemei a kapott tömb értékeit tartalmazzák.
+            Pl.:
 
-            arrayContent = content.map('<li>' + element + '</li>' + '<br>')
+            // ha ez a tömb
+            const content = ['első', 'második', 'harmadik'];
 
+            // akkor ez legyen a visszatérési érték (nem kellenek a behúzások, lehet egysoros string a kimenet):
+            <ul>
+                <li>első</li>
+                <li>második</li>
+                <li>harmadik</li>
+            </ul>
+        */
 
+        const content = ['első', 'második', 'harmadik', 'negyedik', 'ötödik'];
+        let arrayContent = [];
 
-        });
+        const htmlTemplateGenerator = function (stringInput) {
 
-        console.log('<ul>' + htmlTemplateGenerator + '<ul>');
+            arrayContent = stringInput.map(item => ('<li>' + item + '</li>'));      // annyiszor amekkora a stringInput mérete
+            arrayContent.unshift('<ul>');       // az elejére
+            arrayContent.push('</ul>');         // a végére
+
+            return arrayContent.join('');                           // ez egysorosba teszi a stringet, de enélkül is szép, lehet helyette semmi, vagy toString() is
+        };
+
+        console.log(htmlTemplateGenerator(content));
 
     </script>
 

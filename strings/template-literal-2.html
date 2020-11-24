@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        const people = [
+            {
+                firstName: 'John',
+                lastName: 'Doe'
+            },
+            {
+                firstName: 'Jane',
+                lastName: 'Doe'
+            }
+
+        ];
+
+        const template = `  
+                         <div>                       
+                            ${people.map(person => `<p>${person.firstName} ${person.lastName}</p>`).join('')}
+                         </div>
+        `;
+        // nem kell feltétlen a div-eket így rendezni, lehet egymás mellé is, csak mi tördeltük, a konzolon látszik majd, amit tördelünk, de a html részéről lényegtelen.
+        // map az tömböt ad vissza, az nem jó, ezért kell a join, az összefűzi az elemeket.
+        // tudok multiline stringeket is létrehozni
+
+        //console.log(template);
+
+        // beírjuk a body-ba:
+        document.body.innerHTML = template;     // máshova is írhattuk volna
+
+                // ezt szeretnénk kapni
+        // <div>
+        //     <p>John Doe</p>
+        //     <p>Jane Doe</p>
+        // </div>
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        const max = Number.MAX_VALUE;
+        console.log(max ** 2);          // ekkor infinityt kapok
+        // ez bigInt-tel kiküszöbölhető
+
+        const bigIntNumber = BigInt(max);       // a BigInt konstruktort használom new kulcsszó nélkül
+        console.log(typeof bigIntNumber);       // ez biging típusú, ez egy új típus, Chrome támogatja (nem minden)
+        //console.log(bigIntNumber ** 2);           // ez nem jó, ezt nem tudjuk, bigint-et csak biginttel lehet műveletezni
+        console.log(bigIntNumber ** 20n);            // ezért kell az 'n' a 20 után, hogy jelezzük, ez akármilyen nagyot kibír ezért hasznos!
+
+    </script>
+</body>
+
+</html>

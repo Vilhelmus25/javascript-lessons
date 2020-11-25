@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        console.log(Number.MAX_VALUE);     // 64biten tárolódik minden szám a memóriában, ez lehetőséget ad arra, hogy nagyon nagy számokkal is dolgozhassunk
+        // előfordulhat, hogy 2 számunk pont ugyanolyam módon van tárolva 64-bite-en, holott a két szám eltérő
+        console.log(Number.MAX_SAFE_INTEGER);       // ez a lehető legnagyobb biztonságos számot adja a tárolás szempontjából.
+        console.log(Number.MIN_SAFE_INTEGER);       // ezeknél kisebb vagy nagyobb számoknál már előfordulhat, hogy egyezés legyen a memóriában
+        // fontos ezt olykor vizsgálni
+
+        console.log(Number.isSafeInteger(Number.MAX_SAFE_INTEGER + 1));         // false-t ad
+
+    </script>
+
+</body>
+
+</html>

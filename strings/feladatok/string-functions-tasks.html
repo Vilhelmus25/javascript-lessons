@@ -30,20 +30,40 @@
 
 
         /*      Feladat 2  -  tagged template       */
-        {
-            const makeBoldHtmlContent = (texts, ...values) =>
-                texts.map((text, index) =>
-                    `<i>${text}</i><b>${values[index]}</b>`).join('');          // még undefined-ot ad a végére, de jó
 
-            const toHtml = makeBoldHtmlContent`My name is ${mister.firstName} ${mister.lastName} by now.`;
-            document.body.innerHTML = toHtml;
-        }
+        const makeBoldHtmlContent = (texts, ...values) =>
+            texts.map((text, index) =>
+                `<i>${text}</i><b>${values[index]}</b>`).join('');          // még undefined-ot ad a végére, de jó
+
+        const toHtml = makeBoldHtmlContent`My name is ${mister.firstName} ${mister.lastName} by now.`;
+        document.body.innerHTML = toHtml;
+
 
 
         /*      Feladat 3  -  tagged template       */
 
-        const shaperFunction = (char, ...array) => console.log((char, array));          // folyt köv.
-        shaperFunction('!', mister);
+        function shaperFunction(char, ...arrays) {
+            // const concatedArray = arrays.flat();
+            // const noRepeat = concatedArray.filter((item, index) => concatedArray.indexOf(item) == index);
+            // const removeIfIncludesChar = noRepeat.filter(item => item.indexOf(char) === -1);
+            // const removeWhiteSpace = removeIfIncludesChar.map(item => item.trimEnd());
+            //console.log(removeWhiteSpace);
+
+            const concatedArray = arrays.flat();
+            return concatedArray.flat()
+                .filter((item, index) => concatedArray.indexOf(item) === index)         // 
+                .filter(item => item.indexOf(char) === -1)
+                .map(item => item.trimEnd());
+
+        }
+
+
+
+        const stringArray = ['asd', '  dsa', 'qwe', 'ewq      '];
+        const stringArray2 = ['ewq  ', 'asd ', '    dsa', 'qwe'];
+        const stringArray3 = ['asd  ', 'dsa', 'qwe  ', 'ewq'];
+        const arrayCollection = ([...stringArray, ...stringArray2, ...stringArray3]);
+        shaperFunction('w', arrayCollection);
 
     </script>
 

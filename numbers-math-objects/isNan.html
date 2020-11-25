@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        console.log('--- Global isNan() ---');
+        console.log(isNaN(true));        // ezt tudja számmá konvertálni, tehát false-t ad
+        console.log(isNaN('hello'));     // ezt nem lehet számmá alakítani   true
+        console.log(isNaN(12));           // ezt számmá tudja alakítani   false
+        console.log(isNaN(NaN));           // true
+        console.log(isNaN('NaN'));           // true
+        console.log(isNaN('12'));           // false
+
+
+        console.log('--- Number.isNan() ---');
+        console.log(Number.isNaN(true));        // false
+        console.log(Number.isNaN('hello'));     // false
+        console.log(Number.isNaN(12));           // false
+        console.log(Number.isNaN(NaN));           // true           // csak ez ad Number típust ez valóban NaN
+        console.log(Number.isNaN('NaN'));           // false
+        console.log(Number.isNaN('12'));           // false
+
+        // így tudjuk igaziból megvizsgálni egy értékről, hogy az valóban egy szám típusú NaN értéke.
+        // A Global vizsgálat az típuskonverziót hajt végre a háttérben valójában
+
+    </script>
+
+</body>
+
+</html>

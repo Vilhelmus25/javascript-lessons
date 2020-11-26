@@ -11,30 +11,31 @@
 
     <script>
         'use strict';
-        /*      Feladat 1   ---  SumOfBigNumbers   ---      */
+        /*    ---  Feladat 1   ---  SumOfBigNumbers   ---      */
         console.log('      Feladat 1   ---  SumOfBigNumbers   ---');
-        /*
-                function sumOfNumbers(...numbers) {
-                    //console.log(numbers);                               // egy tömbbe pakolódott a sok paraméterünk
-                    // numbers.forEach(element => console.log(element));   // így írjuk ki egyesével őket
-        
-                    let temp = 0;
-                    let bigIntSum;
-                    temp = numbers.reduce((a, b) => a + b);         // a reduce fv-el lehet olyat, hogybejárok egy tömböt és egy u.n.:
-                    // accumulator-ba helyezei az jelen esetben az összeget és egy currentValue-ja
-                    // pedig hozzá adódik ehhez jelen esetben az összeadással
-                    if (temp > Number.MAX_SAFE_INTEGER) {
-                        bigIntSum = BigInt(temp);
-                    }
-                    return bigIntSum;
-                }
-        
-                console.log(sumOfNumbers(Number(1000000000000000), Number(1000000000000000),
-                    Number.MAX_SAFE_INTEGER, Number(5000000000000000),
-                    Number(2000000000000000)));
-        */
 
-        /*      Feladat 2       ---   function params Numbers & BigInts     ---     */
+        function sumOfNumbers(...numbers) {
+            //console.log(numbers);                               // egy tömbbe pakolódott a sok paraméterünk
+            // numbers.forEach(element => console.log(element));   // így írjuk ki egyesével őket
+
+            let temp = 0;
+            let bigIntSum;
+            temp = numbers.reduce((a, b) => a + b);         // a reduce fv-el lehet olyat, hogybejárok egy tömböt és egy u.n.:
+            // accumulator-ba helyezei az jelen esetben az összeget és egy currentValue-ja
+            // pedig hozzá adódik ehhez jelen esetben az összeadással
+            if (temp > Number.MAX_SAFE_INTEGER) {
+                bigIntSum = BigInt(temp);
+            }
+            console.log('The sum of the numbers are: ');
+            return bigIntSum;
+        }
+
+        console.log(sumOfNumbers(Number(1000000000000000), Number(1000000000000000),
+            Number.MAX_SAFE_INTEGER, Number(5000000000000000),
+            Number(2000000000000000)));
+
+
+        /*  ---    Feladat 2       ---   function params Numbers & BigInts     ---     */
         console.log("      Feladat 2       ---   function params Numbers & BigInts     ---     ");
 
         function sumOfNumbersBigParams(...bigNumbers) {
@@ -43,22 +44,65 @@
 
             let temp = 0;
             let bigIntSum;
+            let bigIntInParams = [];                                                    //  minden ami Number típus volt, az BigInt lesz és bekerül ebbe
 
-            console.log(bigNumbers.filter(element => typeof element === "bigint"));
+            console.log('The original numbers are: ');
+            bigNumbers.forEach(element => console.log(element));                                                 // kiiratások a teszteléshez
 
-            temp = bigNumbers.reduce((a, b) => a + b);         // a reduce fv-el lehet olyat, hogybejárok egy tömböt és egy u.n.:
+            if (bigNumbers.some(element => typeof element === "bigint")) {              //  ha van bigin-t típusú elem a paraméterek közt
+                bigNumbers.map(element => bigIntInParams.push(BigInt(element)));        //  akkor menjen végig az elemeken és tegye minde a bigIntInparams tömbbe, mint BigInt
+                console.log('The modified Numbers (BigInts now) are: ');
+                bigIntInParams.forEach(element => console.log(element));
+            }
+
+            temp = bigIntInParams.reduce((a, b) => a + b);         // itt a Number és a BigInt nem fér össze, ezért csak BigInt elemek kellenek, de a feladat is ezt kéri
             // accumulator-ba helyezei az jelen esetben az összeget és egy currentValue-ja
             // pedig hozzá adódik ehhez jelen esetben az összeadással
-            if (temp > Number.MAX_SAFE_INTEGER) {
-                bigIntSum = BigInt(temp);
-            }
+            bigIntSum = BigInt(temp);
+
+            console.log('The sum of the numbers are: ');
             return bigIntSum;
         }
+        /*
+        let test = `valamiString ${BigInt(100)}`;   // csak érdekesség
+        console.log(typeof test);               // string
+        console.log(test);              // a bigint-ről eltűnik az n
+        */
 
         console.log(sumOfNumbersBigParams(Number(1000000000000000), BigInt(1000000000000000),
             Number.MAX_SAFE_INTEGER, Number(5000000000000000),
             Number(2000000000000000)));
 
+
+        /*  ---    Feladat 3       ---   number systems     ---     */
+        console.log("       Feladat 3       ---   number systems    ---     ");
+
+        // as function declaration
+        /*  function decToOtherSystemConverter(dec) {
+              const numberObj = {
+                  binary: dec.toString(2),                // így konvertálunk másik számrendszerbe.
+                  octal: dec.toString(8),
+                  hexa: dec.toString(16)
+              };
+        
+              return numberObj;
+          }*/
+
+        // as function expression
+        let numberObj;
+        const decToOtherSystemConverter = (dec => numberObj = {
+            binary: dec.toString(2),                // így konvertálunk másik számrendszerbe.
+            octal: dec.toString(8),
+            hexa: dec.toString(16)
+        });
+
+        const decimalParamToConvert = 100;
+        let convertedNumbers = decToOtherSystemConverter(decimalParamToConvert);
+
+        console.log(`The decimal number ${decimalParamToConvert} looks like this in =>
+binary: 0b${convertedNumbers.binary}
+octal: 0o${convertedNumbers.octal}
+hexa: 0x${convertedNumbers.hexa}`);
 
     </script>
 

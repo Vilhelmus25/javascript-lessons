@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        const person = {
+            firstName: 'John',
+            lastName: 'Doe',
+            age: 30
+        };
+
+        const { firstName, lastName } = person;                // itt nem [] hanem {}-t használok és a két konstanst hozok létre, pontosan ugyanúgy írjuk mint a person property-jét
+        console.log(firstName, lastName);
+
+        //ha ezt csinálom:          ez hibát dob, pontosan kell a propertyre hivatkozni
+        // const { a, lastName } = person;                
+
+        // console.log(a, lastName);
+
+        // ez nagyon hasznos arra, hogy az objektumok propertyjét változókhoz rendelhessük!!!
+
+        // ha mégis a fentit szeretném, más változónévvel, akkor:
+
+        const { firstName: f, lastName: l } = person;           // ':' -al rendelem hozzá egy másik nevű változóhoz, így már jó
+        console.log(f, l);
+    </script>
+
+</body>
+
+</html>

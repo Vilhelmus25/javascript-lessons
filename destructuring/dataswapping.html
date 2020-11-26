@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        let a = 'A értéke';
+        let b = 'B értéke';
+
+        [a, b] = [b, a];        // megcseréli a kettőt      (az 'a' változónak a jobb oldali elem elsőjét adja, 'b'-t)
+
+        console.log(a, b);
+        function advancedBubbleSort(arr) {
+            let swapped;
+            do {
+                swapped = false;
+                for (let i = 0; i < arr.length; i += 1) {
+                    if (arr[i] > arr[i + 1]) {
+                        // //swap arr[j]-t arr[j+1]-el
+                        // temp = arr[j];
+                        // arr[j] = arr[j + 1];                         // régen a csere
+                        // arr[j + 1] = temp;
+                        // swapped = true;
+                        [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];        // most a csere
+                        swapped = true;
+                    }
+
+                }
+            } while (swapped);
+            return arr;
+        }
+        console.log(advancedBubbleSort([2423, 516, 6423, 112, 2, 6346, 7]));
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        //tömbböl értéket szedünk ki és változóhoz rendeljük
+        //const arr = ['one', 'two', 'three'];
+        const arr = [undefined, 'two', 'three', 'four'];        // a four nem lesz letárolva, semmi gond
+        const [a, b, c] = arr;        // a tömb 0-adik elemét megfelelteti a 0-ik elemnek stb.
+        console.log(a, b, c);           // az első undefined lesz, de ha helyette kitörlöm és ,-vel meghagyom a helyét akkor jó
+
+    </script>
+
+</body>
+
+</html>

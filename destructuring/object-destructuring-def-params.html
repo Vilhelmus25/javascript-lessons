@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        // hogyan tudjuk kombinálni a fv-ek default paraméterrel azaz egy alapértelmezett értékadással
+        /*
+                const styles = {
+                    background: 'white',
+                    color: 'red',
+                    display: 'block',
+                    visibility: 'hidden',
+                    border: '2px solid red'             // ha ezt megadom, akkor hiába adok újat a destructuringnál, ezt viszi, mert az default.
+                };
+        
+                const {
+                    background,
+                    color,
+                    display,
+                    border = '1px solid black'              // a border nem szerepel a styles objectben, ezért ennek default értéket adunk
+                } = styles;
+        
+                console.log(background, color, display, border);            // a visibilityt nem tároltam le és kapott egy bordert pluszba default value-val
+        */
+        //      -----           Új változónévvel és default value adás, a kettő kombinációja    !!!         -----
+
+        const styles = {
+            background: 'white',
+            color: 'red',
+            display: 'block',
+            visibility: 'hidden'
+        };
+
+        const {
+            background: b,
+            color: c = 'blue',
+            display: d,
+            border: bo = '1px solid black'
+        } = styles;
+        // white red block 1px solid black              
+        // ami megvolt adva az lesz, ami nem volt megadva, ott a def érték lesz amit a destructuringben adunk meg.
+        console.log(b, c, d, bo);
+
+
+
+    </script>
+
+</body>
+
+</html>

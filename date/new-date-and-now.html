@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        const dateNow = new Date();     // Date object létrehozásához kell a new operátor!
+        console.log(dateNow);       // date stringet ad vissza
+        const date1 = new Date('October 8, 2019 11:50:10');
+        console.log(date1);
+        const date2 = new Date('2019-10-08T11:50:10');  // a konstruktornak így is adhatunk paramétert, így egyben, a T jelenti az időt, hogy most az jön
+        console.log(date2); // így ugyanaz lesz mint date 1
+        const date3 = new Date(2019, 9, 8, 11, 50, 10, 555);          // azért 9 a hónap, mert 0-tól indexelődik a tömb     aztán nap,óra,perc,sec,millisec (ez utóbbi nem látszódik a kiírásnál)
+        console.log(date3);
+        console.log(dateNow.toJSON());        //visszaadja, hasonló formátumban az aktuális időt, milliseccel is
+        const dateString = Date();      // nincs ott a new szó, ezért ha ezt kiiratom hibát ad, mert ez csak egy string így és annak nincs JSON fv-e
+        console.log(typeof dateString.toJSON()); 
+    </script>
+
+</body>
+
+</html>

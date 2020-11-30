@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        // user zárolása egy időre példa
+
+        function isSuspended(suspendTimeInHours, whenSuspended) {       // hány órára, mikor lett felfüggesztve
+            if (!whenSuspended) {
+                return false;
+            }
+            const now = new Date();
+            const elapsedTimeInHours = (now.getTime() - whenSuspended.getTime()) / 1000 / 60 / 60;
+            return !(elapsedTimeInHours > suspendTimeInHours);
+
+        }
+        console.log(isSuspended(12));
+        console.log(isSuspended(12, new Date('2020-11-30T15:11:11')));
+
+    </script>
+
+</body>
+
+</html>

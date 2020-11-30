@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        //  1. Írj egy függvényt, aminek a visszatérési értéke az adott év 01.01. óta eltelt másodperceinek száma!
+        function sinceThen(sinceYear) {
+
+            return (Date.now() - new Date(sinceYear, 0, 1)) / 1000;
+        }
+        console.log(`2020.01.01. óta ennyi másodperc telt el: ${sinceThen(2020)}`);
+
+        //   2. Írj egy függvényt, aminek a visszatérési értéke az adott évben eddig eltelt munkanapok (hétfő-péntek) száma!
+
+        function numberOfWorkdaysSinceThen(sinceYear) {
+
+            const fromDay = new Date(sinceYear, 0, 1);
+            const thisDay = new Date();
+            let counter = 0;
+
+            while (fromDay.toDateString() != thisDay.toDateString()) {
+
+                if (Array.from(fromDay.getDay() == '1' || '2' || '3' || '4' || '5')) {
+                    counter += 1;
+                    fromDay.setDate(parseInt(fromDay.getDate()) + 1);
+                }
+            }
+            return counter;
+        }
+        console.log(`Feladat-2. A munkanapok száma 2020.01.01 óta: ${numberOfWorkdaysSinceThen(2020)}`);
+
+        //  3. Feladat -Írj egy függvényt, ami paraméterként egy Date objektumot kap,
+        // a visszatérési értéke pedig egy objektum két tulajdonsággal, ami a következő formátumban tartalmazza a paraméterként kapott dátumot:
+
+        //short: 2020. jan. 11. 14: 20(tehát évszám, a hónap neve röviden magyarul, kisbetűkkel a nap száma, majd az idő a másodperc nélkül)
+        // long: 2020. január 11. 14: 20: 10(tehát évszám, a hónap neve magyarul, a nap száma, majd az idő)
+
+        function addZero(i) {           // ott ahol lehet 10-nél kisebb az érték, ott legyen 0 előtagja a számnak (01,05,09 stb)
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+
+        function dateForm(dateObject) {
+            const shortLongForm = {
+                short: `${dateObject.getFullYear()}.${dateObject.toLocaleDateString('hu', { month: 'short' })}${dateObject.getDate()}. ${addZero(dateObject.getHours())}:${addZero(dateObject.getMinutes())}`,       // a toLocaleDateString-nek a 2. paramétere egy objektum, és ennek van egy month objektuma, aminek lehet short vagy long propertyje
+                long: `${dateObject.getFullYear()}.${dateObject.toLocaleDateString('hu', { month: 'long' })} ${dateObject.getDate()}. ${addZero(dateObject.getHours())}:${addZero(dateObject.getMinutes())}:${addZero(dateObject.getSeconds())}`
+            }
+            return shortLongForm;
+        }
+        console.log(dateForm(new Date()));
+
+    </script>
+</body>
+
+</html>

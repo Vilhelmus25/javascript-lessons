@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        // get metódus UTC-vel      Ez azért jó, mert ez a Greenwich-i idő szerint írja ki. 
+        // De ha más a lokalizációm, és használom UTC nélkül, akkor előfordulhat az is, hogy valahol már újév van, vagy másik nap amikor itt még nincs.
+        // Az időeltolódás kiküszöbölésére kell ez.
+        const dateNow = new Date();
+        console.log('UTC year: ', dateNow.getUTCFullYear());
+        console.log('UTC month: ', dateNow.getUTCMonth());        // a hónapok száma 0-tól számol, ezért 1-el kevesebbet kapok mindig!!!
+        console.log('UTC day of the week: ', dateNow.getUTCDay());
+        console.log('UTC day of the month: ', dateNow.getUTCDate());
+        console.log('UTC hours: ', dateNow.getUTCHours());
+        console.log('UTC minutes: ', dateNow.getUTCMinutes());
+        console.log('UTC seconds: ', dateNow.getUTCSeconds());
+        console.log('UTC milisecs: ', dateNow.getUTCMilliseconds());
+    </script>
+
+</body>
+
+</html>

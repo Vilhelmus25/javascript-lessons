@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        const dateNow = new Date();
+        console.log(dateNow.toDateString());        // itt csak a dátumot írja ki, az időt nem
+        console.log(dateNow.toLocaleDateString('hu'));        // a locale az azt mondja meg, hogy milyen nyelven, milyen nyelv szabálya szerint jelenjen meg a dátum, formázódjon
+        console.log(dateNow.toTimeString());        // az időt kapom meg
+        console.log(dateNow.toLocaleTimeString('hu'));      //  a magyar lokalizáció szerinti szabály szerint írja ki az időt
+        console.log(dateNow.toJSON());          //  JSON formátumban tárolja a dátumot, a Z azt jelenti a végén,hogy UTC
+        console.log(Date.now());            // az aktuális időt, 1970.01.01 óta eltelt időt kapjuk meg millisecben
+        console.log(Date.now() / 1000 / 60 / 60 / 24 / 365);    //  ennyi év telt el azóta
+
+
+    </script>
+
+</body>
+
+</html>

@@ -50,10 +50,22 @@
             return i;
         }
 
+        function dateShortForm() {
+            const shortOption = {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            }
+            shortAlt: dateObject.toLocaleDateString('hu-HU', shortOption);
+        }
+
         function dateForm(dateObject) {
             const shortLongForm = {
                 short: `${dateObject.getFullYear()}.${dateObject.toLocaleDateString('hu', { month: 'short' })}${dateObject.getDate()}. ${addZero(dateObject.getHours())}:${addZero(dateObject.getMinutes())}`,       // a toLocaleDateString-nek a 2. paramétere egy objektum, és ennek van egy month objektuma, aminek lehet short vagy long propertyje
                 long: `${dateObject.getFullYear()}.${dateObject.toLocaleDateString('hu', { month: 'long' })} ${dateObject.getDate()}. ${addZero(dateObject.getHours())}:${addZero(dateObject.getMinutes())}:${addZero(dateObject.getSeconds())}`
+
             }
             return shortLongForm;
         }

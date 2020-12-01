@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        // const firstName = 'John';
+        // const lastName = 'Doe';
+        // const user = {
+        //     firstName: firstName,
+        //     lastName: lastName
+        // };
+        // console.log(user);
+
+        // ha azt akarom, hogy a property ugyanolyan a névvel jöjjön létre mint ami a változónak a neve
+        const firstName = 'John';
+        const lastName = 'Doe';
+        const user = {
+            firstName,          // itt megkapják a fenti változók értékét, ha ugyanaz a nevük. Ez a property shorthand!!!
+            lastName
+        };
+        console.log(user);
+    </script>
+
+</body>
+
+</html>l

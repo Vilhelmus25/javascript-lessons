@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        // set esetén minden érték egyedi, nem úgy mint a tömbben, ahol egy érték többször is szerepelhet
+        const languages = new Set();
+        languages                   // method chaining ugye, ez már volt
+            .add('php')
+            .add('python')
+            .add('perl')
+
+        languages.delete('php')     // egyértelmű
+        console.log(languages.size);        //  2
+        languages.clear();              // kipucolja
+        console.log(languages.size);        // 0
+
+        // hogy tudjunk tovább dolgozni, visszaírjuk
+        languages                   // method chaining ugye, ez már volt
+            .add('php')
+            .add('python')
+            .add('perl')
+
+        const values = languages.values();      // ez egy setIterator, ha iterátor, akkor lesz next metódusa (a next mindig 2 értéket ad vissza, egy értéket és egy 'done' értéket (végeztünk-e az idferátorral))
+        console.log(values.next().value);        // ha nem két értéket akarok visszakapni, akkor a .value-val csak az értéket adja vissza
+        console.log(values.next());
+        console.log(values.next());
+        console.log(values.next());             // itt már a done az true lesz
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        // objecteken belül hidden property létrehozására jó. Lehetnek a propertyk stringek, vagy symbolok. Ha végig iterálok az objecten, akkor a symbolok nem jelennek meg.
+        const id = Symbol('id');
+        const person = {
+            [id]: 1,
+            firstName: 'John',
+            lastName: 'Doe'
+        }
+        console.log(person.id);
+        for (const key in person) {
+            if (person.hasOwnProperty()) {
+                console.log(key);
+            }
+        }
+
+        console.log(Object.getOwnPropertySymbols(person));      // ezzel viszont ellehet érni a symbolt az objecből
+        // ha több symbol is van:
+        console.log(Object.getOwnPropertySymbols(person).map(symbol => person[symbol]));      // ezzel bejárom és konkrétan az értékét kapom
+
+
+    </script>
+
+</body>
+
+</html>

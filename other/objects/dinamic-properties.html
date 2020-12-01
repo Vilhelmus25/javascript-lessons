@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        // hozzunk létre propertyket objectekhez dinamikusan
+
+        const keys = ['key1', 'key2', 'key3'];
+        const values = ['values1', 'values2', 'values3'];
+
+        const myObj = {
+            [keys.shift()]: values.shift(),          // shift() segítségével végiglépkedek egy tömbbön. Ezzel létrejön 1 db property egy objectnek, aminek a kulcsa a key1 és az értéke a value1
+            [keys.shift()]: values.shift(),
+            [keys.shift()]: values.shift(),
+            // lehet fv-el is ezt megvalósítani, lehet olyan, hogy több a kulcs mint az érték, akkor
+
+        }
+
+    </script>
+
+</body>
+
+</html>

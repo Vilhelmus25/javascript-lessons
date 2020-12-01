@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        // set esetén minden érték egyedi, nem úgy mint a tömbben, ahol egy érték többször is szerepelhet
+        const languages = new Set();
+        languages                   // method chaining ugye, ez már volt
+            .add('php')
+            .add('python')
+            .add('perl')
+            .add('perl')        //  ezt már nem adja hozzá
+
+        console.log(languages.size);        // 3 lesz
+        console.log(languages.entries());       // az elemeket tudom lekérdezni
+        console.log(languages.values());        // az értékeket tudom lekérdezni
+        console.log(languages.has('php'));          // van-e ilyen elem, boolean 
+
+
+    </script>
+
+</body>
+
+</html>

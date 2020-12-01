@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        let key1 = {
+            name: 'John Doe'
+        };
+
+        let key2 = {
+            name: 'Jane Doe'
+        };
+
+        const sampleMap = new Map();                // itt bármi lehet a kulcs
+        const sampleWeakMap = new WeakMap();        // itt csak object
+
+        sampleMap.set(key1, 'dead');
+        sampleWeakMap.set(key2, 'dead');        // így jó, de a key2 helyett stringet, primitívet semmit nem írhatok
+
+        console.log(sampleMap.get(key1));
+        console.log(sampleWeakMap.get(key2));
+
+        // azért is weakmap, mert csak gyengereferenciaként tárolja az objektumot, amit kulcsnak használunk fel
+
+        key1 = null;
+        sampleMap.forEach((value, key) => console.log(key));
+
+        key2 = null;            // a WeakMapnek nincs forEach metódusa, csak get, set, delete, has metódusai vannak, más nem használható
+        // illetve gyengén tárolja a referenciát, miután ennek az objectnek új értéket adtam, automatikusan a weakmapből is törlődni fog a key2 kulcsú elem itt
+        console.log(sampleWeakMap.get(key2));       // memória spórolásra jó viszont
+
+    </script>
+
+</body>
+
+</html>

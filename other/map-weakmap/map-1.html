@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+        // a map kulcs érték párokat tároljunk benne. A sima objecthez képest a map kulcsai, nem csak stringek, hanem bármi, akár egy másik object is
+
+        const sampleMap = new Map();
+        sampleMap
+            .set('foo', 123)            // a set olyan mint a tömböknél a push, de a map-nél már rendezve lesznek tárolva az elemek
+            .set('moo', 456)
+            .set('boo', 789)
+        console.log(sampleMap.get('foo'));      // 123
+        console.log(sampleMap.has('boo'));       // adott kulcsú elem szerepel-e    true
+        const objKey = {                        // ezt az objektumot fogom felhasználni kulcsként a map-en belül
+            name: 'John Doe'
+        };
+        sampleMap.set(objKey, 'dead');      // ezt objektumok esetén nem tehetem meg, csak string lehet ott, de itt ez megy.
+        console.log(sampleMap.get(objKey));        // dead
+        console.log(sampleMap.has(objKey));     //true
+    </script>
+
+</body>
+
+</html>

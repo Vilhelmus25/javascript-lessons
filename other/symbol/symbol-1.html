@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        const mySymbol = Symbol();       //     nincs new!!!! mert a symbol az primitív típus, de a konstruktorával inicializálom
+        console.log(typeof mySymbol);
+        const mySymbol2 = Symbol('mySymbol');       // lehet string, szám is...
+        const mySymbol3 = Symbol('mySymbol');
+
+        console.log(mySymbol2 == mySymbol3);        // false, soha nem lesz egyenlő egymással
+        console.log(mySymbol.toString());       // Symbol()     -- ezt írja ki
+        console.log(mySymbol2.toString());       // Symbol(mySymbol)     -- ezt írja ki
+    </script>
+</body>
+
+</html>

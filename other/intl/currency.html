@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        const usCurrency = new Intl.NumberFormat('en-US', {  // az első param, milyen nyelven szeretném formázni a számot (angol-amerikai)
+            style: 'currency',              // a másodikban 2 property lesz , style: 'currency', hogy milyenre szeretném formázni a számot, pénzösszeg szerint
+            currency: 'USD'                 // jelenjen meg az usd jele a $
+        });
+        const gbCurrency = new Intl.NumberFormat('en-GB', {
+            style: 'currency',
+            currency: 'GBP'
+        });
+        const deCurrency = new Intl.NumberFormat('de-DE', {
+            style: 'currency',
+            currency: 'EUR'
+        });
+
+        console.log(usCurrency.format(100200400.45));       // a NumberFormat objectnek a format() -metódusát fogom meghívni
+        console.log(gbCurrency.format(100200400.45));
+        console.log(deCurrency.format(100200400.45));
+    </script>
+
+</body>
+
+</html>

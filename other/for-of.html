@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        const munbers = [1234, 62, 123, 7234, 32];
+        for (let i in numbers) {                        // kulcsok (tömbindex) bejárásra használjuk
+            if (numbers.hasOwnProperty(key)) {          // amennyiben saját tulajdonságáról van, nem valami öröklöttről
+                console.log(key);                       // numbers[key] írja ki az értékeket
+            }
+        }
+
+        for (let values of numbers) {           // numbers helyett Object.keys(numbers), így a kulcsokat kérdezi le
+            console.log(values);            // ez képes az üres elemeken is végig menni, ha egy tömbben vannak üres elemek, a másik nem feltétlen
+        }                                                                   //  ^
+        // a for és a for of hasonlóan működik, ha a tömbünk nem szekvenciális  |
+    </script>
+
+</body>
+
+</html>

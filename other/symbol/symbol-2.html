@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        const id = Symbol.for('id');        // létezik egy global symbol registry, egy kulcs-érték pár alapon tárolja az összes globálisan létrehozott symbolt, symbol for segítségével
+        console.log(id.description);        // ha már létezik, akkor nem héz újat létre     --id
+        const anotherId = Symbol.for('id'); // mivel ez a symbol már létre lett hozva korábban globálisan, ezért annak az értékét fogja tartalmazni
+        console.log(id === anorherId);      // true, mert két symbol igaz nem egyenlő, mert más az azonosítójuk, de ebben az esetben, ha már volt ilyen symbol for('id'), akkor csak lemásolja az új voltozónak
+
+        const nameSymbol = Smybol.for('name');
+        console.log(Symbol.keyFor(nameSymbol));         // keyFor : visszaad egy stringet, a name-et. Így is le tudom kérdezni az értéket
+        console.log(nameSymbol.description);             // ugyanazt kapom meg
+    </script>
+
+</body>
+
+</html>

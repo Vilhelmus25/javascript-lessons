@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';       // egy új API-al foglalkozunk, például adott pénzösszeg formátum megjelenítése valutajellel
+
+        const charList = ['ä', 'a', 'z'];       // ezeket akarom rendezni a karaktereket abc szerint, de két különböző nyelven, (svéd és német)
+        const germanCollator = new Intl.Collator('de');       // az összehasonlítást végzi
+        const swedishCollator = new Intl.Collator('sv');       // az összehasonlítást végzi
+
+        console.log(charList.sort(germanCollator.compare));     // a compare visszaad egy +1 vagy -1 -et, attól függően, hogy az adott két elem az abc-ben követik-e egymást vagy sem, ezalapján a sort már sorba foga tudni rendezni az elemeket
+        console.log(charList.sort(swedishCollator.compare));
+    </script>
+
+</body>
+
+</html>

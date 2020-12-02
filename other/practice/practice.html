@@ -23,6 +23,7 @@
         console.log(removeDuplicates(arrayWithDuplicates));
 
 
+
         //  2. Feladat:  Készíts egy HU nevű objektumot, aminek az alábbi propertijei vannak:
 
         //              date(): Visszaadja a paraméterként megadott dátumot a magyar dátumírás szabályainak megfelelően
@@ -31,17 +32,35 @@
         const present = new Date();
         const penz = 123456;
         const textInput = ['első', 'második', 'harmadik', 'negyedik'];
+
         const HU = {
-            date(now) { new Intl.DateTimeFormat('hu-HU').format(now) },
+            date(present) { return new Intl.DateTimeFormat('hu-HU').format(present) },
             currency(money) {
-                new Intl.NumberFormat('hu-HU', {
+                const forint = new Intl.NumberFormat('hu-HU', {
                     style: 'currency',
                     currency: 'HUF'
-                })
+                });
+                return forint.format(money);
             },
-            list(input) { }
-        }
+            list(input) {
 
+                let string = input.map((elements, index) => {
+                    if (index == input.length - 1) {
+                        return 'és ' + elements;
+                    }
+
+                    return elements;
+                })
+
+                string = string.join(', ');
+
+                return string;
+
+            }
+        }
+        //HU.date(present);
+        // HU.currency = penz;
+        //HU.list = textInput;
         console.log(HU.date(present));
         console.log(HU.currency(penz));
         console.log(HU.list(textInput));
@@ -59,15 +78,22 @@
 
         //               A fenti metódusok értelemszerűen nem másra szolgálnak, mint az egyik összetett adattípusból konvertálják át az adatokat egy másikba. Mindegyik metódus visszatérési értéke egy új Array, Map, vagy Set object.
 
+        const myMap = new Map();
+        const mySet = new Set();
+        const myArray = [123, 321, 'asd', 'dsa'];
         const objectConverter = {
-            arrayToMap(array) { },
-            arrayToSet(array) { },
+            arrayToMap(array) { return myMap.set(array.map((elements, index) => elements), array.map((elements, index) => index)) },
+            arrayToSet(array) { return mySet.add(array.map((elements, index) => elements), array.map((elements, index) => index)) },
             setToMap(set) { },
             setToArray(set) { },
             mapToArray(map) { },
             mapToSet(map) { }
         }
-
+        const newMap = objectConverter.arrayToMap(myArray);
+        const newSet = objectConverter.arrayToSet(myArray);
+        console.log(newMap);
+        console.log(newSet);
+        console.log(objectConverter.setToMap(newSet));
     </script>
 
 </body>

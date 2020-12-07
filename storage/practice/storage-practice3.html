@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        //  3.Feladat:  
+        //  Adott egy json file, ami valójában egy tömb, lastName, firstName propertyket tartalmazó objektumokkal.
+        //  Írj egy függvényt, ami indít egy ajax kérést, ami elkéri a json tartalmát, és a firstName, lastName párosokat egymás alá beleírja egy div-en belüli p-tagekbe, és létrehoz egy users nevű bejegyzés a localStorage-be, ahol a json tartalmát letárolja.
+        //  Módosítsd a függvényt úgy, hogy amennyiben a localStorage-ba van users bejegyzés, úgy onnan olvassa ki az adatokat, ha nincs csak akkor küldjön ajax kérést.
+
+        const jsonFile = {
+            lastName: [...lastNames],
+            firstName: [...firstNames],
+        }
+        function ajaxRequest() {
+
+            const lastNames = jsonFile.lastName;
+            console.log(lastNames);
+            document.createElement('div');
+            container.appendChild(card);
+            card.classList.add('card');
+
+            card.innerHTML = `
+                   <div class="card__front card__face">
+                       <img src="./assets/images/${image}.jpg" alt="${image}" class="${image}">
+                   </div>
+                   <div class="card__back card__face">
+                       <img src="./assets/images/creator.jpg" alt="Creator" class="creator--${index}">
+                   </div>`;
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

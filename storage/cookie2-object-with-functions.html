@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        // object, aminek 4 db metódusa legyen, set, get, exits, del metódusokkal
+        const cookieHandler = {
+            setCookie(name, value, expirationDays = 365, path = '/') {
+                const now = new Date();
+                now.setTime(now.getTime() + (expirationDays * 24 * 60 * 60 * 1000));
+                const expires = now.toUTCString();
+                document.cookie = `${name}=${value};expires=${expires};path=${path}`;
+            },
+            getCookie(name) {
+                const keyValuePairs = document.cookie
+                    .split('; ')      // splittel vágom a stringet a '; ' mentén és minden elemet egy tömbbe tesz
+                    .find(cookie => cookie.startsWith(`${name}=`))      // kell az egyenlőségjel a biztonság kedvéért
+                return keyValuePairs ? keyValuePairs.split('=')[1] : '';
+            },
+            checkCookie(name) {
+                const exists = cookieHandler.getCookie(name);
+                return exists ? true : false;
+            },
+            deleteCookie(name) {            // az expiration date-et átállítjuk egy múltbéli időre.
+                document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
+
+            },
+        }
+
+        // cookieHandler.setCookie('username', 'Vörös Vilmos');
+        // cookieHandler.setCookie('job', 'Student');
+        // console.log(cookieHandler.getCookie('job'));            // 'jobb' nem ad semmit
+        // console.log(cookieHandler.checkCookie('job'));            // 'jobb' false-t ad
+        cookieHandler.deleteCookie('job');                          // a username-es azért maradt meg, mert a gépen tárolódik a süti, és a job-osost töröltem, amit korábban már létrehoztam
+
+        //console.log(document.cookie);               // ez egy hosszú stringbe bepakolja az összes sütit egy ';'-vel szeparálva. Ezt használjuk ki a get-nél
+
+    </script>
+
+</body>
+
+</html>

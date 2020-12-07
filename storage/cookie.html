@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        // limitek régen: rfc2109, total: 300 , 20/domain szabály darabszám, és max 4kB méretűek
+        // most http://browsercookielimits.squawky.net/
+
+        //sütik
+
+        // régen mindent sütiben tároltunk
+        // ma már nem mindent, pl, vannak token-ek
+        //document.cookie = 'username=John Doe; expires=Fri, 01 Jan 2021 12:00:00 UTC; path=/';       //path=/ ez a default, ezt el is hagyhatnám
+        document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';       // ha egy sütit akarok törölni, akkor a lejárati idejét egy múltbéli napra tesszük
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        // a sütikkel ellentétben, a storage-ok, 5-10 Mb lehet böngésző függő
+        // csak kulcs-érték párokat tudunk megadni, semmi mást.
+        // ha nagy méretű adatokat akarok tárolni, vagy ha nem túl érzékeny adatokat akarok tárolni, ahol a biztonság nem fontos.
+        // a session-storage addig van őrizve a kulcs-érték pár, amíg a böngésző lapfület be nem csukjuk.
+        // a local-storage meg a gépen, amíg mi vagy a user ki nem törli.
+        // a kettő emúgy ettől eltekintve teljesen egyforma
+
+        //localStorage
+
+        localStorage.setItem('username', 'John Doe');           // mindig stringkét tárolódik minden (sütinél is).  Persze lehet trükközni és átalakítani.
+        localStorage.setItem('username', JSON.stringify({       // így tudjuk objektummal megoldani
+            name: 'John Doe',
+        }));
+        console.log(localStorage.getItem('username'));          // ez string
+        // ha ezt objektumként szeretném használni:
+        console.log(JSON.parse(localStorage.getItem('username')));
+        console.log(localStorage.key());            // egy adott indexű elem kulcsát tudom lekérdezni
+        //console.log(localStorage.removeItem('username'));           // törlés
+        localStorage.clear();       // az összeset kipucolja
+
+    </script>
+
+</body>
+
+</html>

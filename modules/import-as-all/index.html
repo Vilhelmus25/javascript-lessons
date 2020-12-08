@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script type="module" src="app.js">          // type-ot meg kell adni, hogy ez egy modul
+
+
+// Lehet így is, csak nem szép, nem is ajánlatos, de ilyenkor nem kell src.
+// Viszont amit így importálok be, az globálisan nem elérhető, ez egy nagyon jó dolog!!!
+// Ha a module.js-ben az egyik fv, mondjuk a subtractValues elől kiveszem az export kulcsszót, akkor nem is tudom importálni, csak ha kitörlöm innen lentről
+// 
+
+        // 'use strict';
+        // // ez tartalmazza az összes kis modult amit használni szeretnék
+        // import {    // az export mivel 2 objectre mutat, ezért object destructuringot kell használnom
+        //     sumValues, subtractValues
+        // } from './module.js'
+        // console.log(sumValues(2, 3));
+
+
+    </script>
+
+</body>
+
+</html>

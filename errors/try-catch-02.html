@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        const jsonData = `
+            {
+                "firstName": "John",
+                "lastName": "Doe",
+                "age": 30,
+
+            }
+        `;          // hogy ha a szervertől egy adatokat kérünk az a legtöbbször egy JSON formátum, ami egy string, ezt parse-olni kell
+        // hogy tudjuk használni. Ígye egy példa, mondjuk egy kapott json-izált stringre.
+
+        try {        // mert parse-olásnál előfordulhat hiba
+            const user = JSON.parse(jsonData);
+            console.log(user);
+        } catch (error) {
+            console.error(error);       //hiba a 146-ik karakternél, az kb. az age 30 utáni vessző lehet, az ott maradt
+            //  ebben az esetben itt az usernek adhatunk default value-t:
+            const user = {
+                firstName: 'Jane',
+                lastName: 'Doe',
+                age: 30
+            }
+            console.error(error.name);      //SyntaxError           google: List of Errors      developer.mozilla.org
+        }
+
+
+        console.log('RUN');
+
+
+    </script>
+
+</body>
+
+</html>

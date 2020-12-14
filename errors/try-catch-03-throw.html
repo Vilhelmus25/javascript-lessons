@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        // hiba kezelések
+
+
+        const jsonData = `
+    {
+        "firstName": "John",
+        "lastName": "Doe"
+        
+
+    }
+`;          // ha hiányzik az age, akkor lefut a kód, mert ez parse-olható, de lesz egy hiba, amit én készítettem a throw-val
+
+        try {        // mert parse-olásnál előfordulhat hiba
+            const user = JSON.parse(jsonData);
+            if (!user.firstName || !user.lastName || !user.age) {
+
+                throw new ReferenceError('Missing property');       // én hozok létre egy referencia errort, ha hiányzik az user valamelyik 
+            }
+        } catch (error) {               // csak 1 catch ág van minden try-hoz
+            if (error instanceof ReferenceError) {        // ha az error ergy példánya a ReferenceErrornak.         // úgy csináljuk, hogy azt írjuk előre, ami a leggyakrabban történi és így tovább
+                console.error('Custom Error: ', error.message);
+            } else if (error instanceof SyntaxError) {
+                console.error('Szintaktikai hiba');             // szintaktikai hiba a 30 utáni vessző miatt
+            } else {
+                console.error(error.message);
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

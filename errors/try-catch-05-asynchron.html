@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+
+        const jsonData = `
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "age": 30,
+    }
+`;      // a 30 utáni vessző okozz a hibát
+
+        const parse = (data) => JSON.parse(data);
+
+        //try {               // ez így nem jó, nem írja ki catch ágamat.   Aszinkronban a setTimeout-ban kell! A Callback-en belül lesz
+        setTimeout(() => {
+            try {
+                const user = parse(jsonData);
+                console.log(user);
+            } catch (error) {
+                console.error('My catch block: ', error);
+            }
+
+        })
+       // } catch (error) {
+            //console.error('My catch block: ', error);
+      //  }
+
+
+    </script>
+
+</body>
+
+</html>

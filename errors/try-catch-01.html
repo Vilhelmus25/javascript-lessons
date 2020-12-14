@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        // console.log(bubu);      // ez hiba, mert nincs bubu változónk ad egy error objectet a konzolon.
+        // console.log('start');       // ez ár nem fut le
+        try {       // ahol úgy érzem, hogy hiba lehet, azt try blokkba rakom
+
+            console.log(bubu);      // ez hiba lesz
+        } catch (error) {
+            console.error(error.message);           // így csak az error objektumnak a message propertyje lesz kiírva
+            console.error(error.name);              //
+            console.error(error.stack);             //  ez azt is megmutatja, hogy hol a hiba, milyen fv-ből, viszont nem a szabvány része, mégis használják!
+        }
+        console.log('start');       // így már lefut, nem hal meg a program függetlenül attól, hogy lesz-e hiba vagy sem
+
+    </script>
+
+</body>
+
+</html>

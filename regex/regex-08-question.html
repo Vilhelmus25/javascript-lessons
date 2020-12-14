@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        // + 1 vagy több
+        // * 0 vagy több
+        // ? 0 vagy 1
+        const pattern = /ba?/;          // egy 'b' karakter után jönnie kell, vagy nem kell jönnie pontosan 1 'a'-nak
+        //const text = 'ab';              // ez jó lesz.
+        const text = 'abraka';              // ez jó lesz.
+        //const text = 'aba';              // ez jó lesz.
+        //const text = 'aaa';              // nem lesz jó
+        console.log(text.match(pattern));
+        const pattern = /ba?/;
+        const text = 'abraka';
+        console.log(text.match(pattern));
+    </script>
+</body>
+
+</html>

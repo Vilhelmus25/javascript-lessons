@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        // flag kapcsolók: i,g,m        
+        //  i: (ignore), nem lesz case sensitive, vagyis kis és nagybetű között nem tesz különbséget
+        //  g: (global), ha nem csak 1 találatot szeretnénk, mert alapból egyet talál, akkor vége
+        //  m: többsoros string figyelés (multiline)
+        //      const pattern = new RegExp('/ab/');     //így is lehet
+        const pattern = /ab/;
+        const text = 'abraka dabra';
+        console.log(pattern.exec(text));        //  tartalmazza-e a string akárhol a mintát, egy tömböt ad vissza és az első előfordulást adja elvileg
+        console.log(text.match(pattern));       // ugyanaz 
+
+
+    </script>
+</body>
+
+</html>

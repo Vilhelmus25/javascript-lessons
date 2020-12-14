@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+        // speciális jelentése van a .-nak: azt jelenti, hogy ott lehet bármilyen karakter, vagyis bármilyen karakterre ott egyezést fog adni.
+
+        const pattern = /^.a/;      // a stringünk kezdődjön egy akármilyen karakterrel, de utána egy 'a'-betű jöjjön.
+        const text = '7a';
+        console.log(text.match(pattern));
+
+        const pattern2 = /.a/;      // itt bármilyen karakterrel kezdődhet, de utána 'a'-val kell folytatódnia.
+        //  ez mindig igaz, kivéve, ha a text változónk csak ennyi lenne: text = 'a'; ha egy karakteres, akkor ez null-t ad, mert nincs karakter az 'a' előtt.
+
+    </script>
+
+</body>
+
+</html>

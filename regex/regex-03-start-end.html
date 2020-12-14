@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        // flag kapcsolók: i,g,m        
+        //  i: (ignore), nem lesz case sensitive, vagyis kis és nagybetű között nem tesz különbséget
+        //  g: (global), ha nem csak 1 találatot szeretnénk, mert alapból egyet talál, akkor vége
+        //  m: többsoros string figyelés (multiline)
+
+        //const pattern = /ab/;
+        const text = 'abraka dabra';
+
+        // mi van ha azt szeretném, ha a minta pont az elejére, vagy pont a végére illeszkedjen
+        // eleje esetén:^
+        const pattern = /^ab/;
+        //  const pattern = /ab/g;      // 2 hosszú lesz a tömb
+        const pattern = /^ab/g;             // erre egyszer fogja megtalálni a kalap miatt, tehát felesleges a g kapcsoló.
+        const pattern2 = /ab$/;         // $-jel esetén, a stringet a végéről vizsgálja vagyis a stringnek arra kell végződnie, hogy 'ab'.  Erre nem lesz találat, mert nem ab-re végződik az abrakadabra
+        //const pattern2 = /dabra$/;        // ez már ad találatot.
+
+        console.log(text.match(pattern));
+        console.log(pattern2);
+
+    </script>
+</body>
+
+</html>

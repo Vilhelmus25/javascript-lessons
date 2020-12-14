@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        //const pattern = /ab/;
+        const text = 'abraka dabra';
+
+        // mi van ha egy halmazt szeretnék megadni, hogy ezekből mármelyik amelyik egyezik.
+        const pattern = /[abc]/g;    // a háromból bármelyik karakter is ,ha egyezn fog.        ha nincs g akkor az első találat, g-vel az összeset megtalálom
+        const pattern2 = /[^abc]/;      // kell találatot kapnunk
+        const pattern3 = /[abc$]/;      // a, vagy b, vagy c karakterrel végződik-e?
+        const text2 = 'abraka dabrd';       // d a vége, erre nullt ad.
+        console.log(text.match(pattern));
+        console.log(text.match(pattern2));
+        console.log(text.match(pattern3));
+        console.log(text2.match(pattern3));
+        // tudjuk-e azt, hogy a string elejétől vagy végétől nézzük?
+
+        // mi van ha egy karaktersort szeretnék vizsgálni?
+        const pattern4 = /^(ab|bc)/;      // a, vagy b, vagy c karakterrel végződik-e?     // kezdődjön ab, vagy bc karakterekkel
+        //const pattern4 = /^(ab|bc)$/;      // így, a teljes stringre való egyezést vizsgáljuk, vagyis kezdődjön és végződjön is ab, vagy bc karakterekre,( a komplett string nem tartalmazhat mást mint az ab és bc karaktereket)
+        console.log(text.match(pattern4));
+        const pattern5 = /^(ab|bc)$/;
+        console.log('ab'.match(pattern5));  // ez jó, ha 'bc'-re kérdezem, az is, ha 'abc'-re az már nem, tehát az elején és a végén is a fenti patternnak kell lennie
+
+
+
+    </script>
+
+</body>
+
+</html>

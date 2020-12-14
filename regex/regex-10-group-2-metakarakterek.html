@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        //const pattern = /[a-z]/;        // a-tól z-ig tartalmaz-e legalább egyet, az angol abc betűiből?
+        //const pattern = /^[a-z]+$/;        // Csak a-tól z-ig tartalmazzon, nem lesz jó, mert van egy szóköz a text-ben
+        // const text = 'abraka dabra';
+
+        // const pattern = /^[a-zA-Z]+$/;        // Csak a-tól z-ig tartalmazzon
+        // const text = 'Abrakadabra';     // ez jó
+
+        // const pattern = /^[a-zA-Z0-9]+$/;        // Csak a-tól z-ig tartalmazzon,
+        // const text = 'Abrakadabra';             // ez jó
+
+        // const pattern = /^[a-zA-Z0-9_]+$/;        // Csak a-tól z-ig tartalmazzon, és az '_' is ezt röviden így:
+        // const text = 'Abrakadabra';             // ez jó
+
+        // const pattern = /^\w+$/;        // Csak a-tól z-ig tartalmazzon, és az '_' is ezt röviden így
+        // const text = 'Abrakadabra';             // ez jó
+
+        //  [a-zA-Z-0-9_]     \w
+        //  [^a-zA-Z0-9_]     \W        a W a tagadás formája   a bal oldali meg a hosszabb verzió
+
+        // const pattern = /^\W+$/;        // Csak a-tól z-ig tartalmazzon, és az '_' is ezt röviden így
+        // const text = 'Abrakadabra';             // ez nem lesz jó
+        // const text = '       ';             // ez már igen
+
+        // [0-9]      \d              //így rövidítjuk ezt
+        // ^[0-9]      \D              //így rövidítjuk ezt  a tagadó forma
+        const pattern = /^\d+$/;        // csak számokat
+        const text = '123';             // ez már igen
+        //const text = '123dasd';             // ez már igen
+        console.log(text.match(pattern));
+
+
+
+
+    </script>
+
+</body>
+
+</html>

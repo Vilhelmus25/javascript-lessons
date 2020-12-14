@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        const Validator = {
+            rules: {
+                visa: /^(\d{4} ){3}\d{4}$/,            // {3} ebből a minimum és a maximum is elhagyható, ez azt jelenti, hogy legyen 3
+                ip: /^(\d{1,3}.){2}(\d{1,3}.)\d{1,3}$/,
+                mac: /^[0-9a-f]{1,2}([\.:-])(?:[0-9a-f]{1,2}\1){4}[0-9a-f]{1,2}$/i
+            },
+            validate(text, type) {
+                return text.match(this.rules[type]) ? true : false;
+            }
+        };
+        console.log(Validator.validate('1234 5678 9012 3456', 'visa'));
+        console.log(Validator.validate('192.168.1.128', 'ip'));
+        console.log(Validator.validate('00:0A:83:B1:C0:8E', 'mac'));
+
+    </script>
+
+</body>
+
+</html>

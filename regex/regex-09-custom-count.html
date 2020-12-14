@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        const pattern = /ba{2,5}/;          // ez azt jelenti, hogy az előtte lévő karakter minimum 2-szer max 5-ször szerepeljen
+        //const text = 'abraka';              // ez null lesz
+        //const text = 'abaraka';              // ez null lesz
+        //const text = 'abaaraka';              // jó lesz
+        //const text = 'abaaaaaraka';              // ez is jó lesz, mert a max 5 utáni egyébbel nem foglalkozik, véget ér vizsgálat
+        // const pattern = /ba{2,5}./;                 // a sok 'a' után jöjjön bármilyen karakter, ez is jó lesz 
+        // const pattern = /ba{2,5}{^a}/;                 // a sok 'a' után nem jöhet 'a' karakter
+        console.log(text.match(pattern));
+    </script>
+</body>
+
+</html>

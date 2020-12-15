@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        function one(args, callback) {
+            console.log('one', args);
+            callback()
+        }
+
+        function two(args, callback) {
+            console.log('two', args);
+            callback()
+        }
+
+        function three(args, callback) {
+            console.log('three', args);
+            callback()
+        }
+
+        function four(args, callback) {
+            console.log('four', args);
+            callback()
+        }
+
+        function five(args, callback) {
+            console.log('five', args);
+            callback()
+        }
+
+        // szinkron kódban inkább így!
+
+        function caller() {
+            one(1);
+            two(2);
+            three(3);
+            four(4);
+            five(5);
+        }
+
+        caller();
+
+    </script>
+
+</body>
+
+</html>

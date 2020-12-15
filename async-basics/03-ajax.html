@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        //let result;                 // ezt soha ne csináljuk, mert hol jó lesz, hol undefined lesz ott lent!!!
+        // helyette:
+        function callback(response, callback) {
+            const result = JSON.parse(xhr.responseText);
+            console.log(result);
+        }
+
+        function resuest(method, url) {
+            xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState == 4 && xhr.status === 200) {
+                    callback(xhr);
+                    //result = JSON.parse(xhr.responseText);
+                }
+            }
+            xhr.open(method, url, true);        // ez mindig true
+            xhr.send();
+        }
+
+        request('GET', './data.json', callback);
+       // console.log(result);            //ez itt undefined lesz, mert csak akkor lesz értéke, hogy ha XMLHttpRequest sikeres volt, kapott választ.
+    </script>
+
+</body>
+
+</html>

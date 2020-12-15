@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        function one(args, callback) {
+            console.log('one', args);
+            callback()
+        }
+
+        function two(args, callback) {
+            console.log('two', args);
+            callback()
+        }
+
+        function three(args, callback) {
+            console.log('three', args);
+            callback()
+        }
+
+        function four(args, callback) {
+            console.log('four', args);
+            callback()
+        }
+
+        function five(args, callback) {
+            console.log('five', args);
+            callback()
+        }
+
+        // EZT Soha szinkron kódoknál, soha!!!
+
+        one(1, function () {
+            two(2, function () {
+                three(3, function () {
+                    four(4, function () {
+                        five(5, function () {
+                            // ...
+                        });
+                    });
+                });
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        setTimeout(console.log, 1000, '1000');
+        // 999,1000 a sorrend
+        setTimeout(console.log, 999, '999');
+
+        setTimeout(console.log, 1, '1');
+        // 1,0 a sorrend    ez azért van, mert az elsőt megívja előbb, de előbb végez vele, mint ahogy a 2. lefutna, mert olyan kevés az idő a kettő között
+        setTimeout(console.log, 0, '0');
+
+
+
+        setTimeout(console.log, 1000, '1000');
+
+        for (let i = 0; i < 5000; i += 1) {             // előbb a szinkron fut le, a timeOut callbakcje majd csak a végén
+
+            console.log(i);
+        }
+
+        setTimeout(console.log, 999, '999');
+
+        // úgy kell elképzelni, hogy az 1000-es setTimeout-ot beteszi egy Execution stack-be, felismeri, hogy ahhoz tartozik egy web API, mert ez nem szinkron fv.
+        // onnan aztán bekerül egy task queue-ba, ahonnan csak akkor fog kikerülni, hogy ha az Execution Stack üres, de most a for ciklus lefoglalja egy időre, egy szinkron művelet
+// ha végzett a ciklus, megürül a stack és bekrül oda timeout a queue-ból
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        function one(args, callback) {
+            setTimeout(function () {
+                callback()
+                console.log(args * 1);
+            }, 1000);
+        }
+
+        function two(args, callback) {
+            setTimeout(function () {
+                callback()
+                console.log(args * 2);
+            }, 10000);
+        }
+
+        function three(args, callback) {
+            setTimeout(function () {
+                callback()
+                console.log(args * 3);
+            }, 3000);
+        }
+
+        function four(args, callback) {
+            setTimeout(function () {
+                callback()
+                console.log(args * 4);
+            }, 5000);
+        }
+
+        function five(args, callback) {
+            setTimeout(function () {
+                callback()
+                console.log(args * 5);
+            }, 1000);
+        }
+
+        function caller() {
+            var result1 = one(1);
+            var result2 = two(result1);
+            var result3 = three(result2);
+            var result4 = four(result3);
+            var result5 = five(result4);                // itt a result5-nek a callback funtion-je nem hívodott meg, mire odajut
+            console.log(result5);
+        }
+
+        caller();
+
+
+    </script>
+
+</body>
+
+</html>

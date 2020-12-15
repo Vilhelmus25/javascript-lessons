@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button class="click-me">Click</button>
+
+    <script>
+
+        'use strict';
+        const btn = document.querySelector('.click-me');
+        btn.addEventListener('click', () => {
+            console.log('Listener 1');
+
+            // setTimeout(() => {
+            //     console.log('setTimeout 1');
+            // }, 0)
+            // vagy:
+            setTimeout(console.log, 0, 'setTimeout 1')      // ugyanaz
+
+            Promise
+                .resolve('Promise 1')
+                .then(console.log)
+
+            Promise
+                .resolve('Promise 1.2')
+                .then(console.log)
+        })
+
+
+        // erre a gombra két eseményfigyelőt teszünk
+        btn.addEventListener('click', () => {
+            console.log('Listener 2');
+
+            // setTimeout(() => {
+            //     console.log('setTimeout 1');
+            // }, 0)
+            // vagy:
+            setTimeout(console.log, 0, 'setTimeout 2')      // ugyanaz
+
+            Promise
+                .resolve('Promise 2')
+                .then(console.log)
+        })
+
+
+        // az eredmény a console-on:        Listener 1; Promise 1; Promise 1.2; Listener 2; Promise 2; setTimeout1; setTimeout2
+        // miért a Promise fut le előbb minden egyes esetben? Mert 
+        // Előbb lefut a szinkron utasítás a Listener 1, a setTimeout kikerül a megfelelő BrowserAPI-hoz és a Promise is ami lekezeli, viszont
+        // bármennyi Promise-unk is van, mindig előbb fut le, mert nem a Task Queue-be kerül bele, hanem egy MicroTask Queue-be kerül, ami prioritást élvez a task queue-hoz kéepst
+        // és nem egy kerül be belőle a STACK-be, hanem az összes, és a Promise-ok Microtask Queue-k. Ezeket egyébként Job-oknak hívjuk
+        // előbb az első callback fut le, aztán lefut a szinkron művelet, majd 2 aszinkron, az egyik ebből a setTimeout, a másik a promise.
+        // az előbbi a taskqueue-be kerül, a másik a microtask queue-be, mivel az elsőbbséget élvez így onnan kikerül a szinkron kódrész lefutása után, mivel a Stack megüresedett és a promise-ok futnak le.
+        // a setTimeout nem fut le, mert közbenlefut a másik callback, aminek van egy szinkron művelete, ami lefut, majd egy setTimeout aszinkron, ami szintén a task-queue-ba kerül
+        // és a Promise a microTask queue-ba, ami le is fut a szinkron rész után.
+        // a végére marad a task queue- elemei sorban.
+
+        // @ What the heck is the event loop anyway     --google it!
+
+
+    </script>
+
+</body>
+
+</html>

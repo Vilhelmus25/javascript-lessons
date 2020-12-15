@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+        // a javascript alapból 1 szálú és szinkron végrehajtás van, DE
+        // vannak olyan műveletek, amik aszinkron fognak futni
+        // ez nem jelenti azt, hogy több szálon futnak a programok.
+        // Ne keverjük össze soha a párhuzamos programozással!!!
+
+        console.log('start');
+
+        setTimeout(() => console.log(0), 0);
+
+        setTimeout(() => console.log(1000), 1000);
+
+        console.log('end');
+
+        // clg: start,end,0,1000
+        // ez azért van, mert a setTimeout-ot a js a végére haggya
+        // előbb a szinkron műveletek futnak le
+
+
+    </script>
+
+</body>
+
+</html>

@@ -27,7 +27,7 @@
         console.log(localStorage.getItem('username'));          // ez string
         // ha ezt objektumként szeretném használni:
         console.log(JSON.parse(localStorage.getItem('username')));
-        console.log(localStorage.key());            // egy adott indexű elem kulcsát tudom lekérdezni
+        console.log(localStorage.key());            // egy adott indexű elem kulcsát tudom lekérdezni       // ha nincs index a zárójelben, akkor a 0. Ez jelen esetben a 'name: 'John Doe' propertyt tartalmazó objektum
         //console.log(localStorage.removeItem('username'));           // törlés
         localStorage.clear();       // az összeset kipucolja
 

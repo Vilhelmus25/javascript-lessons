@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        // a promise all akkor jöhet jól, ha mondjuk egy cégtől kérek árajánlatot és amiket küldenek, én abból az elsőt elfogadom, és a többi nem érdekel, mert kell egy cucc azonnal.
+
+        const promises = [
+            new Promise((resolve, reject) => { setTimeout(resolve, 3000, '3000 HUF') }),         // a 3000 HUF-ot adjuk át a resolve-nak paraméterként
+            new Promise((resolve, reject) => { setTimeout(resolve, 2000, '2000 HUF') }),
+            new Promise((resolve, reject) => { setTimeout(resolve, 1000, '1000 HUF') }),
+            new Promise((resolve, reject) => { setTimeout(resolve, 4000, '4000 HUF') }),
+        ];
+
+        Promise
+            .race(promises)             // ahogy a legelső promise fulfilled lesz, akkor jön a then
+            .then(console.log)          // sima console.log, csak átadom és nem meghívom, mert paramétert vár, ami egy fv is lehet
+
+        Promise
+            .all(promises)              // itt mind a 4-nek fulfillednek kell lennie
+            .then(console.log)
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        // a Promise-t arra tudjuk használni, hogy elkerüljük a callback hair-t (fv-ek callbackjeinek a callbackjeinek, a callbackjeinek, a stb. a sokáig meghívása).
+        // a Promise egy speciális objektum, ami egy aszinkron műveletnek az állapotát hordozza. Az aszinkron műveletknél mindig szükség van egy callback-re, amit meghívunk.
+
+        const samplePromise = new Promise((resolve) => {        //Promise() van egy executor fv-e, ami az esetünkben egy arrow funktion
+            console.log('Promise is pending');
+            setTimeout(() => {
+                // a promise-nak 4 fajta állapota lehet:
+                //  -   Pending: amíg folyamatban van
+                //  -   Fulfilled: ha sikeresen lefutott.
+                //  -   Reject: sikertelen
+                //  -   Settled: Ha végzett, függetlenül attól, hogy sikeres vagy nem
+                resolve('Promise is fulfilled')
+            }, 3000)
+
+        })
+        samplePromise.then((data) => console.log(data));           // itt a data nem más, mint amit a resolve-nál adtam paramétert
+
+    </script>
+
+</body>
+
+</html>

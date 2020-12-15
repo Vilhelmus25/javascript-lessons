@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+
+        const users = [{
+            firstName: 'Doe',
+            lastName: 'John',
+            age: 33
+        },
+        {
+            firstName: 'Kiss',
+            lastName: 'Gábor',
+            age: 41
+        },
+        {
+            firstName: 'Nagy',
+            lastName: 'Ilona',
+            age: 56
+        }
+        ];
+
+        // tudjuk a promise-okat chain-elni.
+        function findUserByAge(age) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const user = users.find((user) => user.age === age);              // lementjük a user objektum age argumentumját
+                    if (user) {
+                        resolve(user);
+                    } else {
+                        reject(Error('Data not found'));
+                    }
+
+                }, 0)           // hogy aszinkron legyen, de lehet 0 is a timeout
+            })
+        }
+
+        findUserByAge(33)
+            .then((user) => {
+                user.firstName = user.firstName.toLocaleUpperCase();
+                return user;            // itt adjuk vissza, amire megy a következő then
+            })
+            .then((user) => {
+                console.log(user);
+
+            })
+            .catch((error) => {
+                console.error(error);
+            })
+    </script>
+
+</body>
+
+</html>

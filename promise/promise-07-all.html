@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        // Több aszinkron műveletem van egyszerre, nem tudjuk hogy az egyeseknek mennyi időre van szükségük. De azt akarjuk, hogy megvárják egymást!
+        //  
+
+        const cat = new Promise((resolve) => {
+            setTimeout(() => {
+                resolve({
+                    sound: 'miau',
+                    loyal: false
+                })
+            }, 3000)
+        });
+        const dog = new Promise((resolve) => {
+            setTimeout(() => {
+                resolve({
+                    sound: 'vau',
+                    loyal: true
+                })
+            }, 6000)
+        });
+
+        //  Ha minde a két promise-om fulfilled lett, akkor és csak akkor írja ki a macska és kutya objectet
+
+        Promise
+            .all([cat, dog])                // promise all---megadhatok több promise-t (cat,dog)
+            .then((results) => {              // csak akkor fut le a then, ha mindkettő promise fulfilled lett, 100 promise esetén is mind a 100-nak fulfilled kell legyen
+                // ugyanakkor, 100 promise esetén ha az egyik elpukkan, akkor egyből a catch ágra jutunk, ugyanakkor a többi promise fut még a háttérben
+                const [cat, dog] = results;   // a results-ből szedem ki
+                console.log(cat, dog);          // kiírja a két objektumot, de nem 3 és 6 sec után, hanem csak 6 sec után a kettőt egyszerre, mert megvárja a cat a dog-ot!!!
+            })
+            .catch((error) => {                 //
+                console.error(error);
+            })
+
+
+    </script>
+
+</body>
+
+</html>

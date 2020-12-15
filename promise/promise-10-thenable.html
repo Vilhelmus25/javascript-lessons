@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        const thenable = {                  // ez nem egy promise, mégis van then fv-e
+            age: 30,
+            then(resolve, reject) {
+                setTimeout(() => resolve(this.age * 2), 1000)
+            }
+        };
+
+        Promise
+            .resolve('Success')
+            .then((result) => {
+                console.log(result);
+                return thenable;                    // ez egy objektum, mive lvan egy then metódusa, így az automatikusan meghívódik.
+            })                                      // vagyis 
+            .then((value) => console.log(value))    // a value az age 2-szerese lesz, a fenti resolve hívódik meg
+
+    </script>
+
+</body>
+
+</html>

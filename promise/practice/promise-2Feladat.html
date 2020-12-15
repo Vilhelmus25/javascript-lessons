@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+        // Írj egy másik függvényt, mely paraméterként szintén egy tömböt kap.A függvény visszatérési érték egy Promise.
+        // A Promise resolved lesz, amennyiben a tömb minden eleme string, és visszatér az ABC szerinti rendezett tömbbel.
+        // Ha nem minden elem string, akkor a Promise rejected lesz, és kiírja a konzolra: Error: Not all items in the array are strings!
+        // Ha a sorba rendezés során hiba történik akkor is rejected lesz a Promise, a visszatérési érték:
+        // Error: Something went wrong with sorting words.
+
+
+        // todo*/
+        /*
+                const arrayOfStrings = ['asd', 'dsa', 'qwe', 'ewq', 'yxc', 'cxy'];
+        
+                const capitalize = (arr) => {
+                    return new Promise((resolve, reject) => {
+                        setTimeout(() => {
+                            const isAllString = arr.every((elem) => typeof elem == 'string');       // minden elem string-e
+                            if (isAllString) {
+                                resolve(arr.map(elements => elements.toLocaleUpperCase()));
+                            } else {
+                                reject(Error('Not all items in the array are strings!'));
+                            }
+        
+                        }, 0)           // hogy aszinkron legyen, de lehet 0 is a timeout
+                    })
+                }
+                capitalize(arrayOfStrings)
+                    .then((data) => console.log(data))           // itt a data nem más, mint amit a resolve-nál adtam paramétert
+                    .catch((error) => console.error(error))           // itt a data nem más, mint amit a resolve-nál adtam paramétert
+        */
+
+    </script>
+
+</body>
+
+</html>

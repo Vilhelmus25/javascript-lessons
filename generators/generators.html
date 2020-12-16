@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+
+        function* languages() {         // a gen fv a futását bármikor szüneteltetni tudom és bármikor vissza tudok ugrani és folytatni.
+            console.log('Start');
+            yield 'php';                // egy pillanatnyi visszatérési értéket is vissza tudok adni
+            yield 'perl';               // ha meghívom a fv törzse nem fog lefutni clg-vel lehet tesztelni 
+            yield 'ruby';
+            console.log('End');
+        }
+
+        const generatorObject = languages();
+        // iterátor :
+        // Egy olyan struktúra, ami az iterációk következő elemére mutató pointert tartalmaz
+
+        // iterable:
+        // Egy olyan adatszerkezetet ír le, ami lehetőséget biztosít a belső adatok egymás utáni elérésére.
+
+        console.log(generatorObject.next());            // a next mindig egy objectet ad vissza, aminek 2 propertyje van(a yield utáni és egy állapot(lefutott-e)).    // így megáll az első yieldnél
+        console.log(generatorObject.next());            // perl, false
+        console.log(generatorObject.next());            // ruby, false
+        console.log(generatorObject.next());            // itt lesz true,de a value-ja undefined
+    </script>
+
+</body>
+
+</html>

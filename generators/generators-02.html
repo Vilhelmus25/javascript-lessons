@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        const users = [{
+            firstName: 'Kiss',
+            lastName: 'József',
+            age: 18
+        },
+        {
+            firstName: 'Horváth',
+            lastName: 'Péter',
+            age: 34
+        },
+        {
+            firstName: 'Kováts',
+            lastName: 'Ilona',
+            age: 24
+        },
+        {
+            firstName: 'Nagy',
+            lastName: 'Antal',
+            age: 66
+        }
+        ];
+
+        // a generátor függvényekkel rengeteg memóriát tudunk spórolni
+        function* lopp(arr) {
+            for (const item of arr) {
+                yield item;
+            }
+        }
+
+        const items = lopp(users);
+        console.log(items.next().value);            // így csak az értékét kéri le, a done propertyét nem
+
+    </script>
+</body>
+
+</html>

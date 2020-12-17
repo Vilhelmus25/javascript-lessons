@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //'use strict';
+
+        // Feladat 1:   Írj egy generátor függvényt, amit egyedi indexek generálására használsz! A index értéke kezdetben 1 legyen, és egyesével léptesd!
+        function* uniqueindexGenerator(iteration = 1) {
+
+            while (true) {
+                iteration = iteration + 1;
+                yield iteration;
+            }
+        }
+
+        const uniqueID = uniqueindexGenerator();
+        console.log(`Unique ID: ${uniqueID.next().value}`);
+        console.log(`Unique ID: ${uniqueID.next().value}`);
+        console.log(`Unique ID: ${uniqueID.next().value}`);
+        console.log(`Unique ID: ${uniqueID.next().value}`);
+        console.log(`Unique ID: ${uniqueID.next().value}`);
+
+        // Feladat 2:   Írj egy generátor függvényt, ami a 2 hatványait adja vissza!
+
+        function* powerGenerator(basis = 1, exponent) {         // brute force módon, Math.pow(x,2) helyett
+            let powered = basis;
+            let iteration = 0;
+            while (true) {
+                if (iteration == 0) {
+                    iteration += 1;
+                    yield 1;
+                }
+                if (iteration == 1) {
+                    iteration += 1;
+                    yield powered;
+                }
+                for (let i = 1; i <= exponent; i++) {
+                    powered = powered * basis;
+                    iteration += 1;
+                    yield powered;
+                }
+            }
+        }
+
+        const power = powerGenerator(2, 1);
+        console.log(`Powered Number: ${power.next().value}`);
+        console.log(`Powered Number: ${power.next().value}`);
+        console.log(`Powered Number: ${power.next().value}`);
+        console.log(`Powered Number: ${power.next().value}`);
+        console.log(`Powered Number: ${power.next().value}`);
+        console.log(`Powered Number: ${power.next().value}`);
+        console.log(`Powered Number: ${power.next().value}`);
+        console.log(`Powered Number: ${power.next().value}`);
+        console.log(`Powered Number: ${power.next().value}`);
+        console.log(`Powered Number: ${power.next().value}`);
+        console.log(`Powered Number: ${power.next().value}`);
+
+
+        // 3. Feladat:      Van egy előre megírt fibonacci generátor függvényed:
+
+        /*  function* fibonacci() {
+             let a = 1;
+             let b = 1;
+             while (true) {
+                 [a, b] = [b, a + b];
+                 yield b;
+             }
+         }
+         A feladatod, hogy írj egy olyan generátor függvényt, ami a fibonacci generátor által visszaadott értékekből visszaadja a kapott érték négyzetét! */
+
+        function* fibonacci() {
+            let a = 1;
+            let b = 1;
+            while (true) {
+                [a, b] = [b, a + b];
+                yield Math.pow(b,2);            // csak ezt kellett átírni
+            }
+        }
+
+        const fibPow = fibonacci();
+        console.log(fibPow.next().value);
+         console.log(fibPow.next().value);
+         console.log(fibPow.next().value);
+         console.log(fibPow.next().value);
+         console.log(fibPow.next().value);
+         console.log(fibPow.next().value);
+         console.log(fibPow.next().value);
+
+
+         // 4. Feladat:     A 14-es Async programming modul feladatait ültesd át fetch, generator function-ös megoldásra.
+
+
+
+
+    </script>
+</body>
+
+</html>

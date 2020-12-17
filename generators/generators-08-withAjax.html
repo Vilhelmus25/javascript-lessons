@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        const urls = ['./date1.json', './data2.json'];
+
+        function responseHandler(gen) {
+            const result = gen.next();
+            const {
+                done,
+                value
+            } = result;             // lementjük egy done és egy value változóba a result-ot, ami egylogikai és egy fetch érték
+
+            if (!done) {       // ha a result done-ja false
+                value
+                    .then((data) => data.json())            // parse-olunk
+                    .then((user) => console.log(user))      // most már a tényleges értéket írja ki
+                    .catch((error) => console.error(error)) // catch hibakezelés
+                responseHandler(gen);           // itt újrahívjuk, vagyis így lesz folyamatosan meghívva amíg van
+            }
+        }
+
+        function* main() {      // ez fogja a fetch kéréseket lekérni
+            for (const url of urls) {
+                yield fetch(url);       // ez egy promiset ad, amit majd kezelnem kell
+            }
+        }
+
+        const myGenerator = main();
+        responseHandler(myGenerator);               // az első meghívás
+        //console.log(myGenerator.next());      // nem itt hanem fent hívom meg a responseHandlernél
+
+    </script>
+
+</body>
+
+</html>

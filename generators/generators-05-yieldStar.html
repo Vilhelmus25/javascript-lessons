@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        function* first() {
+            yield 1;
+            yield 2;
+        }
+        function* second() {
+            yield* first();             // egy generator objectet kapok vissza, a first fv-nek a visszatérési értékét adja vissza
+            yield 3;
+            yield 4;
+            yield 5;
+        }
+
+        for (const value of second()) {         // tudom arra a for-of  loop-ot használni, hogy egy generátor fv-nek az összes yield utáni értéket megkapjam
+            console.log(value);                 // itt csak is a value-k lesznek
+        }
+        // 1 2 3 4 5
+
+    </script>
+
+</body>
+
+</html>

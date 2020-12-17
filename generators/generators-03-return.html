@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        // a yield olyan mint a return, de mégis más.
+        function* generatorFunction() {
+            yield 1;            // ez szünetelteti a futást
+            // return 'end';             // ez befejezi a fv futását, ami utána van az már nem fut le  a return utáni stringet viszont megkapjuk mgé
+            yield 2;
+            yield 3;
+        }
+
+        const generatorObject = generatorFunction();
+        console.log(generatorObject.next());
+        /*   console.log(generatorObject.next());
+              console.log(generatorObject.next()); */
+        //generatorObject.return();       // így is ugyanezt érem el, és ahova teszem, ahányadik next közé, akkor ott lesz
+        console.log(generatorObject.return('end'));     // itt is adhatunk visszatérési értéket
+        console.log(generatorObject.next());
+
+
+    </script>
+
+</body>
+
+</html>

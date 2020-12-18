@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        'use strict';
+
+        function success(response){
+            console.log(response);
+        }
+
+        async function request(url,options = {}){           // ezt használjuk mindig fetchAPI-nál vagy amikor szerverről kell lekérdezni
+           try{
+               const response = await fetch(url,options);      // várjuk meg amíg megkapjuk a választ
+               const result = await response.json();           // a json egy promise-t ad vissza, ezért kell az await
+               success(result.users);
+               //return result;       // ez is járható út, de ekkor egy promise-al tér vissza
+               // return result.users;      // is jó
+           }
+           catch(error){
+               console.error(error);
+           }
+        }
+        request('./data1.json');
+
+    </script>
+    
+</body>
+</html>

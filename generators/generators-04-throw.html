@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        function* generatorFunction() {
+            try {
+                yield 1;
+            } catch (error) {                   // a yieldeknél kell a hibát lekezelni, try-catch-el
+                console.error(error);
+            }
+            //  yield 1;                    // ebben az esetben, mivel nem kezelem a hibát, amikor odajut, akkor nem fog tovább futni az alkalmazásunk akkor
+            yield 2;
+            yield 3;
+        }
+
+        const generatorObject = generatorFunction();
+        console.log(generatorObject.next());
+        console.log(generatorObject.throw(new Error('Custom Error')));      // ilyenkor a generátorfüggvénynek adjuk át a throw tartalmát és ott fog a catch blokkban lekezelődni a dolog
+        // a yield 2 is lefut !!!
+        // console.log(generatorObject.next());
+        //console.log('End');
+
+    </script>
+
+</body>
+
+</html>

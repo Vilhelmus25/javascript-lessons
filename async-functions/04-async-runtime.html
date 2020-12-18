@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        'use strict';
+
+
+         
+        function resolve(value){
+            return new Promise(resolve => {
+                setTimeout(resolve, 2000,value*2)
+            })
+        }
+
+        async function serial(){
+            const a = await resolve(10);
+            const b = await resolve(20);
+            const c = await resolve(30);
+            return a+b+c;     // 2+2 sec kb a futási idő
+        }
+
+        async function parallel(){
+            const promiseA = resolve(1);
+            const promiseB = resolve(2);
+            const promiseC = resolve(3);
+            return (await promiseA) + (await promiseB) + (await promiseC);         // nagyjából 2 sec lesz, mert párhuzamosan fut
+        }
+
+        /* function executionTime(func){
+            const start = performance.now();
+            func();                     // await nélkül 0.19ms lez ami nagyon gyors.    mivel ez egy paraméterül kapott async fv, de nincs awaitje
+            const end = performance.now();
+            return end-start;
+        } */
+
+         // console.log(executionTime(serial));              // ezért ezt át kell rakni az executionTime-ba.
+
+       /*  async function executionTime(func){
+            const start = performance.now();
+            await func();                       // így egy promise-t kapok
+            const end = performance.now();
+            return end-start;      
+        }
+           executionTime(serial).then(console.log());           // 4019 ms */
+
+           async function executionTime(func){
+            const start = performance.now();
+            const result = await func();                       // így egy promise-t kapok
+            const end = performance.now();
+           console.log({
+               functionName: func.name,
+               executionTime: end-start,
+               result
+           })
+        }
+           executionTime(serial);               // n*2 most 6
+           executionTime(parallel);             // ugyanúgy 2 sec lesz ha 3 ha 80
+    </script>
+    
+</body>
+</html>

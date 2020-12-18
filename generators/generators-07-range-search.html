@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        console.log('------------- Range -------------------');
+        function* range(start, end, step) {
+            while (start <= end) {
+                yield start;
+                start += step;
+            }
+        }
+
+        for (const value of range(10, 200, 3)) {            // 10 és 200 között 3-asával léptetve
+            console.log(value);
+        }
+        console.log('------------- Search -------------------');            // minta kiválasztására is jó!
+        const hashtagPattern = /#\w+/g;
+        const text = 'This is a #sample text which #contains a few #specific #hashtags.'
+        function* searchHashtags(text) {
+            let match;
+            do {
+                match = hashtagPattern.exec(text);
+                if (match) {
+                    yield match[0];
+                }
+            } while (match)
+        }
+        for (const hashtag of searchHashtags(text)) {
+            console.log(hashtag);
+        }
+    </script>
+
+</body>
+
+</html>

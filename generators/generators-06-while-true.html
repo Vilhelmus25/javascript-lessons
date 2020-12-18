@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        'use strict';
+
+        function* idGenerator() {
+            let id = 1;
+            while (true) {          // ez egy végtelen ciklus, de nem gond, mert annyiszor lép ahányszor a next-et meghívom, a return-nel meg bármikor megállítható.
+                yield id += 1;
+
+            }
+        }
+        console.log('------------------ID--------------------');
+        const id = idGenerator();
+        console.log(id.next());
+        console.log(id.next());
+        console.log(id.next());
+        console.log(id.next());         // így mindig kapok egy egyedi azonosítót
+
+        // fibonacci
+        function* fibonacci(current, next) {            // bármilyen sorozat gyártására alkalmas hasznos és rövid!!!
+            while (true) {
+                next = next + current;
+                current = next - current;
+                yield next;
+            }
+        }
+        console.log('---------------------Fibonacci--------------------');
+        const fibo = fibonacci(1, 1);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+        console.log(fibo.next().value);
+
+    </script>
+
+</body>
+
+</html>

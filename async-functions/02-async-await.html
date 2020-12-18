@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        'use strict';
+
+        async function one(){
+            const promise = new Promise((resolve,resject) =>{
+                setTimeout(resolve,1000,1);
+     })             // await-ot csak async fv-ben lehet használni
+     const result = await promise;      // az utána lévő aszinkron utasítást megvárja hogy lefusson, vagyis a promise-t és
+     // ha ez a resolve promise lesz, akkor azt lementjük egy változóba és kiírjuk  
+     console.log(result);
+     // * //return result;              // ez csak a promise-t adja vissza,ha utána csak simán kiiratom, ha lent one().then(console.log); van, akkor jó
+    }
+
+    one();          // 1-et látunk
+    // * //console.log(one());
+    // one().then(console.log);
+    </script>
+    
+</body>
+</html>

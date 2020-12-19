@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //'use strict';
+
+        const user = {
+            firstName: 'John',
+            lastName: 'Doe',
+            speak(message) {
+                function logger() {
+                    console.log(this.firstName);    // Jane lesz, mert a windowra mutat a this, a var meg globális
+                }
+                logger();           // így nem fut le! legalábbis strict módban. Mert fv-en belül a this az undefined lesz, strict mód nélkül window
+            }
+        };
+        var firstName = 'Jane';
+
+        user.speak('Hi!');
+
+    </script>
+
+</body>
+
+</html>

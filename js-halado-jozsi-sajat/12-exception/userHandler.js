@@ -33,14 +33,42 @@ const userHandler = {
     // Delay time in seconds
     delay: 5,
     repeatCount: 10,
-    lepeatNum: 0,
+    repeatNum: 0,
     url: 'http://localhost:3000/users',
     // 1. Adatok lekérése.
     // 2. Ha nem sikerül, bizonyos időközönként megismételni, bizonyos számban.
     // 3. Kiírom, hogy az alkalmazás offline módban van.
     // 4. Ha az összes kérés sikertelen volt, akkor betöltöm a localStorage-ból.
     // 5. Ha ez nem sikerült, akkor üres tömböt adok vissza.
+
+
     async getList() {
+
+        while (this.repeatNum < this.repeatCount) {
+            try {
+                const resolve = await fetch(this.url);
+                const data = await resolve.json();
+                this.repeatNum = 0;
+                return data;
+            } catch (e) {
+                this.repeatNum++;
+                new Promise((res => setTimeout(res, this.delay * 1000)));
+                return this.getList();
+            }
+        }
+
+        this.repeatNum = 0;
+        alert('Szerverhiba');
+        if (localStorage.users) {
+            return JSON.parse(localStorage.users);
+        } else {
+            alert('Üres a tároló');
+            return [];
+        }
+    },
+
+
+    /* async getList() {
         // return new Promise((res, rej)){      // ezt váltja ki az async
         // }
         while (this.repeatNum < this.repeatCount) {
@@ -68,7 +96,7 @@ const userHandler = {
             return [];
         }
 
-    },
+    }, */
     async showList(parent, delay, repeatCount) {
         parent = document.querySelector(parent);
         this.delay = delay;

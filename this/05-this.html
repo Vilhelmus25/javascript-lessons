@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        const eventThisSample = {
+            create() {
+                const template = '<button onClick="this.handleClick()">Click me</button>';  //onClick attribútum, ami meghívja ennek az eventThisSample-nek a handleClick fv-ét         nem jó
+                const template = '<button onClick="eventThisSample.handleClick()">Click me</button>';  //  így jó, mert a this sajnos eseménykor maga a gomb lesz, amire kattintunk
+                document.body.insertAdjacentHTML('afterend', template);         // ez azért jobb, mert az adott elem elé, után, elejére, vagy végére akarok-e elemet tenni, most a végére('afterend')
+            },
+            handleClick() {
+                console.log('Clicked');
+            }
+
+        };
+
+        eventThisSample.create();           //  De ott fent a this nem más mint maga a html element, és van ennek handleClick metódusa? Dehogy van.
+    </script>
+
+</body>
+
+</html>

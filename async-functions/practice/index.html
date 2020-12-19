@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+        // 1. Feladat: Alakítsd át az alábbi függvény úgy, hogy fetch-et használsz, és try catch-es kivételkezelést!
+        // function request(method, url){
+        //     const xhttp = new XMLHttpRequest();
+        //     xhr.onload = () => console.log('Request success')
+        //     xhr.onerror = () => console.error('Request error');
+        //     xhr.open(method, url);
+        //     xhr.send();
+        // }
+
+        async function request(url) {             // nem kell method, mert a fetch alapból 'GET'-tel kér le, nem kell promise, mert az async await kiváltja
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                console.log('Request Success');
+                return data;
+            } catch (onError) {
+                console.error(new Error('Request error'));
+            }
+        };
+        request('./data1.json');                // szökszesz
+        //request('./data2.json');              // error
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // 2. Feladat: Írj egy delay nevű aszinkron függvényt, ami paraméterként kap egy számot, és egy callback functiont.
+        // Az paraméternek megfelelő milliszekundum után lefuttatja a második paraméterként kapott callbacket!
+
+        async function delay(callback, num) {
+            return new Promise((res, rej) => {
+                const promise = setTimeout(callback, num);
+            });
+            const result = await promise;
+            console.log(result);
+        };
+        const logger = () => console.log("Logger");
+        delay(logger, 2000);
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        //  3. Feladat: Írj egy olyan async függvényt, ami paraméterként promiseokat (akármennyi lehet, számuk nem ismert) kap.
+        // A visszatérési érték egy Promise legyen, abban az esetben, ha mindegyik Promise fullfilled lett, egyébként egy Error object, az üzenet pedig:
+        // “Promise Error in functionName”. A functionName a függvény neve.
+
+        async function promiseHandler(...promises) {
+            // const array = promises;
+            // console.log(array);
+            try {
+                const promise = await promises;
+                console.log("All Fullfilled");
+                return promise;
+            } catch (error) {
+                return new Error('Promise Error in promiseHandler.');
+            }
+
+        };
+
+        promiseHandler(delay(logger, 2000), request('./data2.json'));           // sajnos nem jó, mindig fulfilled lesz egyből
+
+    </script>
+
+</body>
+
+</html>

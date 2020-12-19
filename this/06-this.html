@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        const user = {
+            firstName: 'John',
+            lastName: 'Doe',
+            speak(message) {
+                console.log(this);
+                console.log(`${this.firstName} ${this.lastName} says ${message}`);
+            }
+        };
+
+        /* const speak = user.speak;       // ilyenkor az user speak metódusa úgy fut le, mint ha kiszedtem volna az objectből és így egy sima function lenne
+        //      vagyis ilyenkor undefined lesz mert strict módban van
+        speak("DO'OH"); */
+
+        const speak = user.speak;
+        speak.call(user, "DO'OH");
+
+
+        const jane = {
+            firstName: 'Jane',
+            lastName: 'Doe',
+        }
+        const speak = user.speak;
+        speak.call(jane, "DO'OH");      // itt a call-al azt mondom, meg, hogy mi legyen a this, vagyis melyik objektum firstName, lastName-je legyen kiírva. A paraméterkeket vesszővel választom el
+        speak.apply(user, ["DO'OH"]);   // annyi a különbés,g ohgy itt a this után egy tömbben adom meg a paramétereket
+        // call és apply: arra használom, hogy egy fv-t meghívjak és én adom meg a thist.
+
+        const speakBind = user.speak.bind(jane);        //user.bind(jane) is lehetett volna
+        speakBind('YEAH');
+        // bind: új függvényt hoz létre, úgy, hogy ennél a fv-nél minden egyes hívásnál mi legyen az értéke
+
+    </script>
+
+</body>
+
+</html>

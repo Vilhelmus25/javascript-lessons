@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        'use strict';
+
+        // const user = {
+        //     firstName: 'John',
+        //     lastName: 'Doe',
+        //     speak: () => {              // az Arrow function nem bindolja a this-t!     Ezért sose használjuk az arrowFunctiont objecten belül
+        //         console.log(this);      // window, mert a parentre mutat
+        //     }
+        // };
+
+        /* const user = {
+            firstName: 'John',
+            lastName: 'Doe',
+            speak: () => {              // az Arrow function nem bindolja a this-t!     Ezért sose használjuk az arrowFunctiont objecten belül
+                function logger() {
+                    console.log(this);      // így window, strict módban undefined
+                };
+                logger();
+            }
+        }; */
+
+        const user = {
+            firstName: 'John',
+            lastName: 'Doe',
+            speak: () => {              // az Arrow function nem bindolja a this-t!     Ezért sose használjuk az arrowFunctiont objecten belül
+                const logger = () => {
+                    console.log(this);  // itt arrow functionben a parentre mutat this, vagyis itt most az user - re
+                };
+                logger();
+            }
+        };
+
+        const user2 = {
+            firstName: 'Jane',
+            lastName: 'Doe',
+            speak() {              // az Arrow function nem bindolja a this-t!     Ezért sose használjuk az arrowFunctiont objecten belül
+                const self = this;      // régen kimentették az object parentjét egy változóba és így lehetett rá hivatkozni
+                function logger() {
+                    console.log(self);
+                };
+                logger();
+            }
+        };
+
+        user2.speak('Hi!');
+
+    </script>
+
+</body>
+
+</html>

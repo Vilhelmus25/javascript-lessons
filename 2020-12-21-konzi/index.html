@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // Lekérjük az adtokat.
+        const getFetchData = async (url) => {
+            let data = [];
+            try {
+                // Danger zone.
+                const response = await fetch(url);
+                if (response.status > 399) {
+                    throw new Error('Request error');
+                }
+                data = await response.json();
+                // End danger zone.
+            } catch (e) {
+                console.error(e);
+            }
+            return data;
+            /* return fetch(url)
+                .then( response => {
+                    if (response.status > 399) {
+                        throw new Error('Request error');
+                    }
+                    return response.json();
+                })
+                .catch( err => Promise.resolve([]) ); */
+        };
+        getFetchData('https://raw.githubusercontent.com/jokecamp/FootballData/master/EPL%202015%20-%202016/2015-10-18.epl-stats.json')
+            .then(
+                console.log
+            );
+        console.log('Before Promise');
+        Promise.resolve([1, 2, 3]).then(
+            arr => console.log(arr)
+        );
+        console.log('After Promise');
+        const p1 = Promise.resolve(1);
+        const p2 = Promise.resolve(2);
+        const p3 = Promise.reject(3);
+        const handlePromises = async (...HartwigLaci) => {
+            return Promise.all(HartwigLaci)
+                .catch(e => new ReferenceError('Promise Error in handlePromises'));
+        };
+        handlePromises(p1, p2, p3).then(
+            console.log
+        );
+        // Mikor nem kell kitenni a zárójeleket egy függvény után?
+        // Ha nem akarom egyből meghívni, hanem mondjuk egy eseménynél vagy 
+        // Promise -nál később kerül meghívásra.
+        const btn = document.createElement('button');
+        const evh = (ev) => {
+            console.log(ev);
+        };
+        btn.addEventListener('click', evh);
+    </script>
+
+</body>
+
+</html>
